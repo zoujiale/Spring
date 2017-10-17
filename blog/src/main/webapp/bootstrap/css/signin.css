@@ -30,13 +30,17 @@ body {
   z-index: 2;
 }
 .form-signin input[type="text"] {
+  margin-top: 20x;
   margin-bottom: 20px;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
 .form-signin input[type="password"] {
   margin-bottom: 20px;
+  margin-top: 20px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
-
+p{
+	    margin: 0 0 auto;
+}

@@ -24,36 +24,43 @@
 </head>
 <body>
 	<div class="container">
-		<form class="form-signin">
+		<form class="form-signin" id="login_in">
 			<h2 class="form-signin-heading">请登陆</h2>
-			<label for="inputEmail" class="sr-only">账户名/邮箱/手机</label> <input
-				type="text" id="username" class="form-control"
-				placeholder="账户名/邮箱/手机" required=""> <label for="inputPassword"
-				class="sr-only">Password</label> <input type="password"
-				id="inputPassword" class="form-control" placeholder="密码" required="">
-			<label for="inputText" class="sr-only">Password</label> 
-		
-				<input type="text" class="form-control" id="exampleInputAmount" placeholder="验证码" required="">
-				
-				
-				 <span
-					class="input-group-addon" id="basic-addon2"><img
-					class="check-code" id="vimg" alt="" src="${pgc}/common/code"></span>
 			
-		
+			<label for="inputEmail" class="sr-only">账户名/邮箱/手机</label> 
+   		  <input
+				type="text" id="username" class="form-control"
+				placeholder="账户名/邮箱/手机" required="" name="username">
+			<!-- <p>sdf</p> -->
+			
+			<label for="inputPassword" class="sr-only">Password</label> <input
+				type="password" id="inputPassword" class="form-control"
+				placeholder="密码" required="" name="password">
+			<!-- <p>sdf</p> -->
+			<label for="inputText" class="sr-only">Password</label> <input
+				type="text" name="code" class="form-control" id="code"
+				placeholder="验证码" required="" style="margin-top: 20px;">
+			<!-- <p style="margin-bottom: 10px;">sdf</p> -->
+			
+				<label class="sr-only" for="exampleInputAmount">验证码</label>
+					<div  class="input-group-addon" >
+						<img class="check-code" id="vimg" alt="" src="${pgc}/common/code">
+					</div>
+				
+
 			<div class="checkbox">
 				<label> <input type="checkbox" value="remember-me"
 					id="reb-bt"> 记住账户名
 				</label>
 			</div>
-			<button class="btn btn-lg btn-primary btn-block" type="submit">登陆</button>
+			<button class="btn btn-lg btn-primary btn-block" type="button">登陆</button>
 		</form>
 	</div>
-	
+
 </body>
 <script type="text/javascript">
 	$(function() {
-		
+
 		//为记住账号设置Cookie
 		var cook_name = 'username';
 		$("#username").change(function() {
@@ -99,9 +106,71 @@
 			}
 		});
 		//刷新验证码功能
-		$("#vimg").bind("click",function(){
+		$("#vimg").bind("click", function() {
 			var date = new Date();
-			$(this).attr("src",'${pgc}/common/code/?'+date.getTime());
+			$(this).attr("src", '${pgc}/common/code/?' + date.getTime());
+		});
+
+		//检测键盘按回车
+		$(document).keydown(function(event) {
+			if (event.keyCode == 13) {
+				$("form :input[type=button]").trigger("click");
+			}
+		});
+
+		// 登陆事件
+		$("form :input[type=button]").bind("click", function() {
+
+			var userId = $("form :input[name = username]").val();
+			var passWord = $("form :input[name = password]").val();
+			var vcode = $("form :input[name = code]").val();
+
+			// 定义一个校验结果 
+			var msg = "";
+			if (!/^\w{2,20}$/.test(userId.trim())) {
+				msg = "登录名必须是2-20个的字符";
+				$("p[id!='']").remove();
+				if ($("p[id!='']").length!=1) {
+					$("#username").after("<p id='a' style='color:#a94442 '>"+msg + "</p>"); 
+				}
+				
+			} else if (!/^\w{6,20}$/.test(passWord)) {
+				msg = "密码必须是6-20个的字符";
+				$("p[id!='']").remove();
+				if ($("p[id!='']").length!=1) {
+					$("#inputPassword").after("<p id='b'style='color:#a94442'>"+msg + "</p>"); 
+				}
+				
+			} else if (!/^\w{4}$/.test(vcode)) {
+				msg = "验证码格式不正确";
+				$("p[id!='']").remove();
+				if ($("p[id!='']").length!=1) {
+					$("#code").after("<p id='c' style='color:#a94442'>"+msg + "</p>");
+				}
+			}
+			if (msg != "") {
+				return; // 结束程序 
+			}else{
+				$("#c").remove();
+			}
+
+			var url = "${pgc}/identity/auth/";
+			var data = $("#login_in").serialize();
+			console.log(data);
+			$.ajax({
+				url : url,
+				type : 'post',
+				data : data,
+				dataType : 'json',
+				success : function(data) {
+					if (data.state) {
+						window.location.href = '${pgc}/common/index'
+					} else {
+						alert(data.message);
+					}
+				}
+
+			});
 		});
 	})
 </script>
