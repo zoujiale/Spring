@@ -182,6 +182,8 @@
 				}
 
 			});
+			$("#vimg").trigger("click");
+			$("#code").val("");
 		});
 	})
 </script>

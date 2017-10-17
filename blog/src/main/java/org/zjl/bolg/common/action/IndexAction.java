@@ -3,8 +3,10 @@ package org.zjl.bolg.common.action;
 import java.security.NoSuchAlgorithmException;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.zjl.bolg.common.service.IndexService;
+import org.zjl.bolg.common.until.CaptchaServiceSingleton;
 import org.zjl.bolg.common.until.Md5Encryption;
 import org.zjl.bolg.common.vi.Message;
 import org.zjl.bolg.identity.domain.User;
@@ -63,23 +66,22 @@ public class IndexAction {
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseBody
 	public Message login(@RequestParam("username") String username, @RequestParam("password") String password,
-			@RequestParam("code") String code, HttpSession session, Model model) {
+			@RequestParam("code") String code, HttpServletRequest req, Model model) {
 
 		Message ms = new Message();
 		
 		// 拿到session的id
-		String sessionCode = (String) session.getAttribute("sessionId");
+		String sessionCode = req.getSession().getId();
 
 		// 用sessionid 跟 传过来的code 回返回是不是激活成功
-/*		Boolean codeTr = new DefaultManageableImageCaptchaService().validateResponseForID(sessionCode,code);
-*/		
-		
-		/*// 判断我的验证码是否跟提交的验证码一致
-		if ("".equals(code) && !codeTr) {
+		Boolean codeTr = CaptchaServiceSingleton.getInstance().validateResponseForID(sessionCode, code);
+		System.out.println(codeTr);
+		// 判断我的验证码是否跟提交的验证码一致
+		if (codeTr == false) {
 			ms.setState(false);
 			ms.setMessage("验证码为空或者错误");
 			return ms;
-		}*/
+		}
 
 		Boolean LoginName = this.indexservice.getuserName(username);
 		boolean checkLogin = true;

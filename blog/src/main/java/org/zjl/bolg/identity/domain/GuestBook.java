@@ -25,7 +25,7 @@ import lombok.Setter;
 @Entity
 @Table(name = "blog_guestbook")
 @Getter@Setter
-public class Guestbook {
+public class GuestBook {
 	@Id
 	@GenericGenerator(strategy = "uuid",name = "uuid")
 	@GeneratedValue(strategy = GenerationType.AUTO,generator = "uuid")

@@ -68,6 +68,6 @@ public class User {
 	private String loginName;
 	
 	@OneToMany(mappedBy = "user")
-	List<Guestbook> guestbook;
+	List<GuestBook> guestbook;
 	
 }

@@ -53,7 +53,8 @@ public class CapchaHelper {
 
 	}
 
-	
+     
+	 
 	// 验证码随机字体大小
 	private static final Font[] RANDOM_FONT = new Font[] { new Font("nyala", Font.BOLD, MIN_FONT_SIZE),
 			new Font("Arial", Font.BOLD, MIN_FONT_SIZE), new Font("Bell MT", Font.BOLD, MIN_FONT_SIZE),
