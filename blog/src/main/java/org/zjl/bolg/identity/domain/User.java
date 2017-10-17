@@ -36,8 +36,6 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.AUTO,generator = "uuid")
 	private String id;
 	
-	@Column(name = "login_name")
-	private String loginName;
 	
 	@Column(length = 50)
 	private String password;
@@ -48,6 +46,7 @@ public class User {
 	/**
 	 * 激活状态
 	 */
+	@Column(length = 10)
 	private Boolean enable;	
 	
 	/**
@@ -61,8 +60,12 @@ public class User {
 	@Column(length = 10 )
 	private String username;
 	
-	@Column(name = "phone_number")
+	@Column(name = "phone_number" , length = 13)
 	private Integer phoneNumber;
+	
+
+	@Column(name = "Login_NAME")
+	private String loginName;
 	
 	@OneToMany(mappedBy = "user")
 	List<Guestbook> guestbook;

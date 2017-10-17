@@ -18,6 +18,7 @@ import org.zjl.bolg.common.until.CapchaHelper;
 
 import com.octo.captcha.Captcha;
 import com.octo.captcha.engine.CaptchaEngine;
+import com.octo.captcha.service.image.DefaultManageableImageCaptchaService;
 
 /**
  * @ClassName: VerificationCodeAction
@@ -28,7 +29,7 @@ import com.octo.captcha.engine.CaptchaEngine;
  */
 @Controller
 @RequestMapping("/code")
-@SessionAttributes("SessionCode")
+@SessionAttributes("sessionId")
 public class VerificationCodeAction {
 
 	@RequestMapping(method = RequestMethod.GET)
@@ -53,8 +54,10 @@ public class VerificationCodeAction {
 		CaptchaEngine ce = CapchaHelper.getCaptchaEngine(captcha_backgrounds);
 		// 需要admin网页中用js定时从服务端获取当前的验证码
 		Captcha captcha = ce.getNextCaptcha();
+		String id = session.getId();
 		// 为了验证，把captcha对象放到session中，以在客户端提交验证码时进行验证
-		model.addAttribute("SessionCode", captcha);
+		model.addAttribute("sessionId", id);
+		
 		// 获取验证码图片，这是未压缩的位图
 		BufferedImage image = (BufferedImage) captcha.getChallenge();
 		ByteArrayOutputStream bao = new ByteArrayOutputStream();

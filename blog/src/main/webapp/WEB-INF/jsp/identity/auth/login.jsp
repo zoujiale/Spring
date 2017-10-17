@@ -23,6 +23,7 @@
 
 </head>
 <body>
+<h1>${SessionCode }</h1>
 	<div class="container">
 		<form class="form-signin" id="login_in">
 			<h2 class="form-signin-heading">请登陆</h2>
@@ -150,23 +151,33 @@
 			}
 			if (msg != "") {
 				return; // 结束程序 
-			}else{
-				$("#c").remove();
 			}
+				$("p[id!='']").remove();
+			
 
-			var url = "${pgc}/identity/auth/";
+			var url = "${pgc}/common/index/";
 			var data = $("#login_in").serialize();
-			console.log(data);
 			$.ajax({
 				url : url,
 				type : 'post',
 				data : data,
 				dataType : 'json',
 				success : function(data) {
+					console.log(data);
 					if (data.state) {
 						window.location.href = '${pgc}/common/index'
 					} else {
-						alert(data.message);
+						var message = data.message;
+						if (message=="验证码错误") {
+							$("p[id!='']").remove();
+							if ($("p[id!='']").length!=1) {
+								$("#code").after("<p id='c' style='color:#a94442'>"+message + "</p>");
+							}else{
+								$("p[id!='']").remove();
+								$("#inputPassword").after("<p id='c' style='color:#a94442'>"+message + "</p>");
+							}
+							
+						}
 					}
 				}
 

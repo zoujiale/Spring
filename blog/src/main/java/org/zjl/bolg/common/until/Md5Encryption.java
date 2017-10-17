@@ -61,6 +61,10 @@ public class Md5Encryption {
 		
 		return sb.toString();
 	}
-	
+	public static void main(String[] args) throws NoSuchAlgorithmException {
+		String string = getmd5Encryption("123456");
+		
+		System.out.println(string);
+	}
 	
 }
