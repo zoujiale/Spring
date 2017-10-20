@@ -1,5 +1,8 @@
 package org.zjl.bolg.common.until;
 
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+
 import com.octo.captcha.service.captchastore.FastHashMapCaptchaStore;
 import com.octo.captcha.service.image.DefaultManageableImageCaptchaService;
 import com.octo.captcha.service.image.ImageCaptchaService;
@@ -13,6 +16,8 @@ import com.octo.captcha.service.image.ImageCaptchaService;
 * @version V1.0   
 */
 public class CaptchaServiceSingleton {
+	@Resource
+	private static HttpServletRequest req;
 	 // 不允许构造实例  
     private CaptchaServiceSingleton() {  
     }  

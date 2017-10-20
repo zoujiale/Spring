@@ -10,6 +10,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -66,8 +67,16 @@ public class User {
 
 	@Column(name = "Login_NAME")
 	private String loginName;
-	
+	/**
+	 * 根据用户查询博文
+	 */
 	@OneToMany(mappedBy = "user")
-	List<GuestBook> guestbook;
+	private List<Article> article;
+	
+	/**
+	 * 根据用户查询用户所拥有的角色
+	 */
+	@ManyToMany(mappedBy = "users")
+	private List<Role> role;
 	
 }

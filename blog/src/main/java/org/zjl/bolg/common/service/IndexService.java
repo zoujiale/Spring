@@ -1,23 +1,25 @@
 package org.zjl.bolg.common.service;
 
-import org.zjl.bolg.identity.domain.User;
+import org.springframework.data.domain.Page;
+import org.zjl.bolg.identity.domain.Article;
 
-/** 
-* @ClassName: IndexService 
-* @Description: 页面的Service逻辑层
-* @author zou
-* @date 2017年10月17日 下午4:20:52 
-*  
+/**   
+* @Title: IndexService.java 
+* @Package org.zjl.bolg.common.service.impl 
+* @Description: TODO(用一句话描述该文件做什么) 
+* @author 704572528@qq.com 
+* @date 2017年10月20日 下午2:09:45 
+* @version V1.0   
 */
 public interface IndexService {
 	/**
-	 * 判断是否存在用户名
-	 * @param username
+	 * 博文分页
+	 * @param pageNumber 传过来的页码
+	 * 
 	 * @return
 	 */
-	Boolean getuserName(String username);
 	
 	
-	User getuserAll(String password, Boolean excuteLoginName);
-	
+	Page<Article> findArticle(int pageNumber);
+
 }

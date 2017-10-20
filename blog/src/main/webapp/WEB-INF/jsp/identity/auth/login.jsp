@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="pgc" value="${pageContext.request.contextPath}"></c:set>
-<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -125,26 +124,25 @@
 			var userId = $("form :input[name = username]").val();
 			var passWord = $("form :input[name = password]").val();
 			var vcode = $("form :input[name = code]").val();
-
+				
+			$("p[id!='']").remove();
 			// 定义一个校验结果 
 			var msg = "";
 			if (!/^\w{2,20}$/.test(userId.trim())) {
 				msg = "登录名必须是2-20个的字符";
-				$("p[id!='']").remove();
+				
 				if ($("p[id!='']").length!=1) {
 					$("#username").after("<p id='a' style='color:#a94442 '>"+msg + "</p>"); 
 				}
 				
 			} else if (!/^\w{6,20}$/.test(passWord)) {
 				msg = "密码必须是6-20个的字符";
-				$("p[id!='']").remove();
 				if ($("p[id!='']").length!=1) {
 					$("#inputPassword").after("<p id='b'style='color:#a94442'>"+msg + "</p>"); 
 				}
 				
 			} else if (!/^\w{4}$/.test(vcode)) {
 				msg = "验证码格式不正确";
-				$("p[id!='']").remove();
 				if ($("p[id!='']").length!=1) {
 					$("#code").after("<p id='c' style='color:#a94442'>"+msg + "</p>");
 				}
@@ -152,10 +150,10 @@
 			if (msg != "") {
 				return; // 结束程序 
 			}
-				$("p[id!='']").remove();
+				
 			
 
-			var url = "${pgc}/common/index/";
+			var url = "${pgc}/common/index/";   // 以Post 请求请求这个Action
 			var data = $("#login_in").serialize();
 			$.ajax({
 				url : url,
@@ -165,25 +163,26 @@
 				success : function(data) {
 					console.log(data);
 					if (data.state) {
-						window.location.href = '${pgc}/common/index'
+						window.location.href = '${pgc}/common/index'  // 以Get 请求请求这个Action
 					} else {
 						var message = data.message;
+						console.log(message);
 						if (message=="验证码错误") {
-							$("p[id!='']").remove();
-							if ($("p[id!='']").length!=1) {
-								$("#code").after("<p id='c' style='color:#a94442'>"+message + "</p>");
+								 if ($("p[id!='']").length!=1) { 
+									$("#code").after("<p id='c' style='color:#a94442'>"+message + "</p>");
+								 } 
 							}else{
-								$("p[id!='']").remove();
 								$("#inputPassword").after("<p id='c' style='color:#a94442'>"+message + "</p>");
 							}
 							
-						}
+						
 					}
 				}
 
 			});
 			$("#vimg").trigger("click");
 			$("#code").val("");
+			$("#inputPassword").val(""); 
 		});
 	})
 </script>

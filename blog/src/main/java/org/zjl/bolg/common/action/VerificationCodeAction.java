@@ -43,9 +43,9 @@ public class VerificationCodeAction {
 
 	private byte[] toImgae(HttpServletRequest req,Model model) throws IOException {
 		// 获取验证码背景图片的路径，这路径放了很多作为背景的图像
-		// String captcha_backgrounds =
-		// session.getServletContext().getRealPath("/image/captcha/");
-		
+		 String captcha_backgrounds =
+		 req.getSession().getServletContext().getRealPath("/image/captcha/");
+		System.out.println(captcha_backgrounds);
 		String id = req.getSession().getId();
 	
 		

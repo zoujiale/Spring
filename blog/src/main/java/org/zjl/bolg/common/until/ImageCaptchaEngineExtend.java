@@ -6,6 +6,7 @@ import java.awt.image.ImageFilter;
 
 import com.jhlabs.image.WaterFilter;
 import com.octo.captcha.component.image.backgroundgenerator.BackgroundGenerator;
+import com.octo.captcha.component.image.backgroundgenerator.FileReaderRandomBackgroundGenerator;
 import com.octo.captcha.component.image.backgroundgenerator.UniColorBackgroundGenerator;
 import com.octo.captcha.component.image.color.RandomRangeColorGenerator;
 import com.octo.captcha.component.image.deformation.ImageDeformation;
@@ -92,9 +93,8 @@ public class ImageCaptchaEngineExtend extends ListImageCaptchaEngine {
 	                maxWordLength, colors, true, new TextDecorator[] {});  
 	  
 	        //背景图生成    
-	        BackgroundGenerator back = new UniColorBackgroundGenerator(imageWidth,  
+	        BackgroundGenerator back =  new UniColorBackgroundGenerator(imageWidth,  
 	                imageHeight, Color.white);  
-	  
 	         //字体生成    
 	        FontGenerator shearedFont = new RandomFontGenerator(new Integer(30),  
 	                new Integer(0), fonts);  
@@ -106,6 +106,8 @@ public class ImageCaptchaEngineExtend extends ListImageCaptchaEngine {
 	  
 	        this.addFactory(new GimpyFactory(dictionnaryWords, word2image));  
 	  
-	    }  
+	    }
+
+	
 
 }

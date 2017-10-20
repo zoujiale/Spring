@@ -2,6 +2,8 @@ package org.zjl.bolg.common.dao;
 
 import javax.persistence.criteria.CriteriaBuilder;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.orm.hibernate5.HibernateOperations;
 
 /**
@@ -16,5 +18,19 @@ public interface CommonDao<T> extends HibernateOperations {
 	 * @return
 	 */
 	CriteriaBuilder getCriteriaBuilder();
-
+	
+	/**
+	 * 拿到总数据
+	 * @return
+	 */
+	Long CountNumber();
+	
+	/**
+	 * 拿到总数数据并分页
+	 * @param pgb
+	 * @param count
+	 * @return
+	 */
+	
+	Page<T> getPage(Pageable pgb,Long count);
 }

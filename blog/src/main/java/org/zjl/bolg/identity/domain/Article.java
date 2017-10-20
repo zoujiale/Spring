@@ -12,20 +12,21 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 /**
- * @ClassName: Guestbook 
- * @Description: 留言板内容
+ * @ClassName: Article 
+ * @Description: 博客的博文信息
  * @author zou
  * @date 2017年10月14日 上午10:18:22 
  */
 
 @Entity
-@Table(name = "blog_guestbook")
-@Getter@Setter
-public class GuestBook {
+@Table(name = "blog_article")
+@Data
+public class Article {
 	@Id
 	@GenericGenerator(strategy = "uuid",name = "uuid")
 	@GeneratedValue(strategy = GenerationType.AUTO,generator = "uuid")
