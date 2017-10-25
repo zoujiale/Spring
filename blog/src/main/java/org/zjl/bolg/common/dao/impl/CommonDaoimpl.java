@@ -112,7 +112,10 @@ public abstract class CommonDaoimpl<T> extends HibernateTemplate implements Comm
 		
 		return count;
 	}
-
+	
+	/**
+	 * 分页查询
+	 */
 	
 	@Override
 	public Page<T> getPage(Pageable pgb, Long count) {
@@ -124,8 +127,6 @@ public abstract class CommonDaoimpl<T> extends HibernateTemplate implements Comm
 		
 		Session session = this.getSessionFactory().getCurrentSession();
 		List<T> content = session.createQuery(query).setFirstResult(pgb.getOffset()).setMaxResults(pgb.getPageSize()).list();
-		System.out.println(content);
-		System.out.println("pageNumbei" + pgb.getPageNumber()  + "pageoffice" + pgb.getOffset());
 		Page<T> pg = new PageImpl<>(content,pgb,count);
 		
 		return pg;
