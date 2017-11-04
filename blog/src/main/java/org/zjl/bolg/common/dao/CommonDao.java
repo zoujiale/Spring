@@ -5,6 +5,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.orm.hibernate5.HibernateOperations;
+import org.zjl.bolg.identity.domain.User;
 
 /**
  * @ClassName: CommonDao 
@@ -29,8 +30,9 @@ public interface CommonDao<T> extends HibernateOperations {
 	 * 拿到总数数据并分页
 	 * @param pgb
 	 * @param count
+	 * @param user 
 	 * @return
 	 */
 	
-	Page<T> getPage(Pageable pgb,Long count);
+	Page<T> getPage(Pageable pgb,Long count, User user);
 }

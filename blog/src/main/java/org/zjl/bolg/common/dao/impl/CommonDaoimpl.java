@@ -16,6 +16,7 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.zjl.bolg.common.dao.CommonDao;
+import org.zjl.bolg.identity.domain.User;
 
 
 /**
@@ -118,13 +119,18 @@ public abstract class CommonDaoimpl<T> extends HibernateTemplate implements Comm
 	 */
 	
 	@Override
-	public Page<T> getPage(Pageable pgb, Long count) {
+	public Page<T> getPage(Pageable pgb, Long count,User user) {
 		
 		CriteriaBuilder builder = this.getCriteriaBuilder();
 		CriteriaQuery<T> query = builder.createQuery(getentityClass());
 		Root<T> root = query.from(getentityClass());
-		query.select(root);
 		
+	
+		
+		query.select(root);
+		if (user != null) {
+			query.select(root).where(builder.equal( root.get("user"), user) );
+		}
 		Session session = this.getSessionFactory().getCurrentSession();
 		List<T> content = session.createQuery(query).setFirstResult(pgb.getOffset()).setMaxResults(pgb.getPageSize()).list();
 		Page<T> pg = new PageImpl<>(content,pgb,count);

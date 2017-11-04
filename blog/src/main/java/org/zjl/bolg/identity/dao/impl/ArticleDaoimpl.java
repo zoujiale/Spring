@@ -1,12 +1,5 @@
 package org.zjl.bolg.identity.dao.impl;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
-
-import org.hibernate.Session;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 import org.zjl.bolg.common.dao.impl.CommonDaoimpl;
 import org.zjl.bolg.identity.dao.ArticleDao;

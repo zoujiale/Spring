@@ -1,5 +1,6 @@
 package org.zjl.bolg.identity.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -43,7 +44,7 @@ public class Role {
 			joinColumns = {@JoinColumn(name = "role_id") },
 			inverseJoinColumns = {@JoinColumn(name = "user_id")}
 			)
-	private List<User> users;
+	private List<User> users = new ArrayList<>();
 	
 
 }
