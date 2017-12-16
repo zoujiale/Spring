@@ -19,7 +19,7 @@
         <logger name="org.fkjava" level="trace" additivity="false">
             <appender-ref ref="Console" />
         </logger>
-        <logger name="org.springframework" level="FATAL" additivity="false">
+        <logger name="org.springframework" level="trace" additivity="false">
             <appender-ref ref="Console" />
         </logger>
 <!--         <logger name="org.hibernate" level="trace" additivity="false"> -->

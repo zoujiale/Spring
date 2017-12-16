@@ -1,20 +1,15 @@
 package zou.common.action;
 
 import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.struts2.ServletActionContext;
-
-import com.opensymphony.xwork2.ActionSupport;
-
 import zou.common.until.CaptchaServiceSingleton;
 
-public class VerificationCodeAction extends ActionSupport{
+public class VerificationCodeAction {
 
 	/**
 	 * 
@@ -23,25 +18,9 @@ public class VerificationCodeAction extends ActionSupport{
 
 	
 	
-	@Override
-	public String execute() throws Exception {
-		// TODO Auto-generated method stub
-		return "success";
-	}
 	
-	public ByteArrayInputStream getCreatecode() throws IOException {
-		HttpServletRequest req = ServletActionContext.getRequest();
-		
-		
-		byte[] bs = this.toImgae(req);
-		
-		ByteArrayInputStream stream = new ByteArrayInputStream(bs);
-		
 	
-		return stream;
-		
-	}
-	
+
 	
 	
 	private byte[] toImgae(HttpServletRequest req) throws IOException {
