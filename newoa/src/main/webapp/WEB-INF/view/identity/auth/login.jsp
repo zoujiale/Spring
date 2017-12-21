@@ -65,13 +65,16 @@
 		var cook_name = 'username';
 		$("#username").change(function() {
 			var username = $("#username").val();
+			var password = $("#inputPassword").val();
 			var isCheck = $("#reb-bt").prop("checked");
 			if (isCheck) {
 				if (username != null && username != "") {
+					
 					$.cookie(cook_name, username, {
 						path : '/',
 						expires : 10
 					})
+					
 				}
 			}
 		});
@@ -81,20 +84,23 @@
 			$("#reb-bt").attr("checked", false);
 		} else {
 			$("#username").val($.cookie(cook_name));
+			$("#inputPassword").val($.cookie("password"));
 			$("#reb-bt").attr("checked", true);
 		}
 
 		$("#reb-bt").bind("click", function() {
 			var username = $("#username").val();
+			var pass = $("#inputPassword").val();
 			username = $.trim(username);
 			var ischeck = $(this).prop("checked");
 			if (ischeck) {
-
+				
 				if (username != "" && username != null) {
 					$.cookie(cook_name, username, {
 						path : '/',
 						expires : 10
 					})
+					$.cookie("password", pass, { expires: 7 });
 				} else {
 					$("#username").val("");
 				}
@@ -108,13 +114,14 @@
 		//刷新验证码功能
 		$("#vimg").bind("click", function() {
 			var date = new Date();
-			$(this).attr("src", '${pgc}/common/code?' + date.getTime());
+			$(this).attr("src", '${pgc}/commons/code?' + date.getTime());
 		});
 
 		//检测键盘按回车
 		$(document).keydown(function(event) {
 			if (event.keyCode == 13) {
 				$("form :input[type=button]").trigger("click");
+				
 			}
 		});
 
@@ -134,18 +141,20 @@
 				if ($("p[id!='']").length!=1) {
 					$("#username").after("<p id='a' style='color:#a94442 '>"+msg + "</p>"); 
 				}
-				
+				$("form :input[name = username]").focus();
 			} else if (!/^\w{6,20}$/.test(passWord)) {
 				msg = "密码必须是6-20个的字符";
 				if ($("p[id!='']").length!=1) {
 					$("#inputPassword").after("<p id='b'style='color:#a94442'>"+msg + "</p>"); 
 				}
+				$("form :input[name = password]").focus();
 				
 			} else if (!/^\w{4}$/.test(vcode)) {
 				msg = "验证码格式不正确";
 				if ($("p[id!='']").length!=1) {
 					$("#code").after("<p id='c' style='color:#a94442'>"+msg + "</p>");
 				}
+				$("form :input[name = code]").focus();
 			}
 			if (msg != "") {
 				return; // 结束程序 
@@ -153,7 +162,7 @@
 				
 			
 
-			var url = "${pgc}/common/index/";   // 以Post 请求请求这个Action
+			var url = "${pgc}/identity/login/";   // 以Post 请求请求这个Action
 			var data = $("#login_in").serialize();
 			$.ajax({
 				url : url,
@@ -163,7 +172,7 @@
 				success : function(data) {
 					console.log(data);
 					if (data.state) {
-						window.location.href = '${pgc}/common/index'  // 以Get 请求请求这个Action
+						window.location.href = data.message  // 以Get 请求请求这个Action
 					} else {
 						var message = data.message;
 						console.log(message);
@@ -182,7 +191,7 @@
 			});
 			$("#vimg").trigger("click");
 			$("#code").val("");
-			$("#inputPassword").val(""); 
+		   $("#inputPassword").val("");  
 		});
 	})
 </script>

@@ -14,6 +14,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -67,7 +68,19 @@ public class User {
 
 	@Column(name = "Login_NAME")
 	private String loginName;
-
+	
+	/**
+	 * 登入时间
+	 */
+	@Column(name = "login_in")
+	@DateTimeFormat(style = "yyyy-MM-dd HH:mm:ss")
+	private  Date loginIn;
+	
+	/**
+	 * 退出登录
+	 */
+	@Column(name = "login_out")
+	private  Date loginOut;
 	
 	/**
 	 * 根据用户查询用户所拥有的角色

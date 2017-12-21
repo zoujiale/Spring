@@ -16,7 +16,7 @@
     </appenders>
     <loggers>
         <!-- additivity是否叠加到root日志记录器，false表示不叠加 -->
-        <logger name="org.fkjava" level="trace" additivity="false">
+        <logger name="zou" level="trace" additivity="false">
             <appender-ref ref="Console" />
         </logger>
         <logger name="org.springframework" level="trace" additivity="false">
@@ -25,13 +25,17 @@
 <!--         <logger name="org.hibernate" level="trace" additivity="false"> -->
 <!--             <appender-ref ref="Console" /> -->
 <!--         </logger> -->
+        <logger name="zou" level="trace" additivity="false">
+            <appender-ref ref="Console" />
+        </logger>
         <logger name="org.hibernate.SQL" level="trace" additivity="false">
             <appender-ref ref="Console" />
         </logger>
+      
         <logger name="org.hibernate.type.descriptor.sql.BasicBinder" level="trace" additivity="false">
             <appender-ref ref="Console" />
         </logger>
-
+		
         <!-- root日志记录器 -->
         <root level="error">
             <appender-ref ref="Console" />
