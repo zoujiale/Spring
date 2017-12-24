@@ -2,8 +2,10 @@ package zou.identity.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -39,12 +41,12 @@ public class Role {
 	private Boolean enable;
 	
 	
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "blog_user_role",
 			joinColumns = {@JoinColumn(name = "role_id") },
 			inverseJoinColumns = {@JoinColumn(name = "user_id")}
 			)
 	private List<User> users = new ArrayList<>();
-	
-
+	@ManyToMany(mappedBy = "roles",fetch=FetchType.LAZY)
+	private Set<Permissions> permissions;
 }

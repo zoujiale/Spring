@@ -2,11 +2,13 @@ package zou.identity.domain;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -85,7 +87,7 @@ public class User {
 	/**
 	 * 根据用户查询用户所拥有的角色
 	 */
-	@ManyToMany(mappedBy = "users")
+	@ManyToMany(mappedBy = "users" ,fetch = FetchType.EAGER)
 	private List<Role> role;
 
 

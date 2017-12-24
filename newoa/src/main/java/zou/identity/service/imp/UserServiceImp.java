@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import zou.identity.dao.UserDao;
+import zou.identity.domain.Role;
 import zou.identity.domain.User;
 import zou.identity.service.UserService;
 
@@ -49,4 +50,12 @@ public class UserServiceImp implements UserService {
 		userdao.save(user);
 
 	}
+
+	@Override
+	public List<Role> findRoleByUser() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
 }
