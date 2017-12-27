@@ -6,6 +6,7 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.DisabledAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.authz.annotation.RequiresGuest;
 import org.apache.shiro.subject.Subject;
 import org.apache.shiro.web.util.SavedRequest;
 import org.apache.shiro.web.util.WebUtils;
@@ -31,6 +32,7 @@ import zou.common.vo.Message;
  */
 @Controller
 @RequestMapping("/login")
+@RequiresGuest
 public class LoginAction  {
 
 	@GetMapping
@@ -46,20 +48,17 @@ public class LoginAction  {
 			String code1 = code.trim();
 			String id = TokenManager.getSessionId();
 			
-
-			
-			
 			
 			Boolean boolean1 = CaptchaServiceSingleton.getInstance().validateResponseForID(id, code1);
 			
 		
 			Message ms = new Message();
 			
-			if (boolean1 == false && code.trim() != null) {
+			/*if (boolean1 == false && code.trim() != null) {
 				ms.setMessage("验证码错误,请重新输入");
 				ms.setState(false);
 				return ms;
-			}
+			}*/
 			
 			Subject subject = SecurityUtils.getSubject();
 			

@@ -1,14 +1,11 @@
 package newoa;
 
-import static org.junit.Assert.*;
-
 import java.util.Set;
 
 import javax.annotation.Resource;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -40,5 +37,11 @@ public class UserDaoTest  extends AbstractTransactionalJUnit4SpringContextTests{
 		for (Permissions permissions : set) {
 			System.out.println(permissions.getUrl());
 		}
+	}
+	@Test
+	public void update() throws Exception {
+		Role role = new Role();
+		role.setId("12332");
+		roledao.save(role);
 	}
 }

@@ -94,8 +94,7 @@
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
-			<version>${hibernate.version}</version>
-
+			<version>5.2.9.Final</version>
 		</dependency>
 		<!-- MySQL 依赖 -->
 		<dependency>

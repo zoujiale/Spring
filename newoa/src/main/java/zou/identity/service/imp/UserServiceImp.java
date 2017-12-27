@@ -2,20 +2,19 @@ package zou.identity.service.imp;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import zou.common.vo.Message;
 import zou.identity.dao.UserDao;
 import zou.identity.domain.Role;
 import zou.identity.domain.User;
 import zou.identity.service.UserService;
 
 @Service
-@Transactional
+@org.springframework.transaction.annotation.Transactional
 public class UserServiceImp implements UserService {
 
 	private static Logger LOG = LogManager.getLogger(UserServiceImp.class);
@@ -55,6 +54,58 @@ public class UserServiceImp implements UserService {
 	public List<Role> findRoleByUser() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public Message UserSave(User user) {
+		// 查询是否重复 true 可修改
+/*		Boolean boolean1 = CheckInUserName(user.getUsername(),user.getId());
+*/		
+		Message message = new Message();
+		User a = userdao.get(User.class, user.getId());
+		a.setPassword(user.getPassword());
+		a.setEmail(user.getEmail());
+		a.setPhoneNumber(user.getPhoneNumber());
+		a.setUsername(user.getUsername());
+		
+		/*
+		if (boolean1 == false) {
+			message.setMessage("用户名的重复请修改");
+			message.setState(false);
+			return message;
+		}*/
+	
+		message.setMessage("修改成功");
+		message.setState(true);
+		return message;
+	}
+
+	@Override
+	public Boolean CheckInUserName(String name,String id) {
+		User user = new User();
+		user.setUsername(name);
+		user.setEnable(true);
+		// 查询重复username
+		List<User> list = userdao.findByExample(user);
+		
+		User user2 = this.findUserByid(id);
+		
+		if (list.isEmpty()) {
+			return true;
+		}
+		// 会不会跟当前user用户名一致
+		for (User users : list) {
+			if (users.getId().equals(user2.getId())) {
+				return true;
+			}
+		}
+		
+		return false;
+	}
+
+	@Override
+	public User findUserByid(String id) {
+		return userdao.get(User.class, id);
 	}
 
 	

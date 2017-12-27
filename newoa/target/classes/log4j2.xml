@@ -22,9 +22,9 @@
         <logger name="org.springframework" level="trace" additivity="false">
             <appender-ref ref="Console" />
         </logger>
-<!--         <logger name="org.hibernate" level="trace" additivity="false"> -->
-<!--             <appender-ref ref="Console" /> -->
-<!--         </logger> -->
+<!--         <logger name="org.hibernate" level="trace" additivity="false">
+            <appender-ref ref="Console" />
+        </logger> -->
         <logger name="zou" level="trace" additivity="false">
             <appender-ref ref="Console" />
         </logger>

@@ -1,6 +1,7 @@
 package zou.identity.dao;
 
-import zou.common.dao.ShareDao;
-public interface RoleDao extends ShareDao {
+import zou.common.dao.CommonDao;
+import zou.identity.domain.Role;
+public interface RoleDao extends CommonDao<Role> {
 
 }

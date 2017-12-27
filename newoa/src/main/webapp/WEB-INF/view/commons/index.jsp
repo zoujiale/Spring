@@ -152,7 +152,7 @@
 							<li class="dropdown user user-menu">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 									<img src="${pgc }/index/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-									<span class="hidden-xs">Alexander Pierce</span>
+									<span class="hidden-xs">${sessionScope.USER_SESSION.username }</span>
 								</a>
 								<ul class="dropdown-menu">
 									<!-- User image -->
@@ -429,17 +429,17 @@
 								<!-- /.box-header -->
 								<div class="box-body">
 
-									<form class="form-horizontal">
-
+									<form class="form-horizontal" method="post"  id="form_user" action="${pgc}/identity/operation">
+										<input type="text" value="${USER_SESSION.id }" name="id">
 										<div class="box-body">
 
 											<div class="row">
 												<div class="col-md-6">
-													<div class="form-group">
+													<div class="form-group"  >
 														<label for="inputEmail3" class="col-sm-2 control-label">用户名</label>
 
 														<div class="col-sm-10">
-															<input type="email" class="form-control" id="inputEmail3" placeholder="用户名">
+															<input name="username" type="email" value="${sessionScope.USER_SESSION.username }" class="form-control" id="inputEmail3" placeholder="用户名">
 														</div>
 													</div>
 												</div>
@@ -448,7 +448,7 @@
 														<label for="inputEmail3" class="col-sm-2 control-label">密码</label>
 
 														<div class="col-sm-10">
-															<input type="password" class="form-control" id="inputEmail3" placeholder="密码">
+															<input type="password" name="password" value="${sessionScope.USER_SESSION.password }"class="form-control" id="inputEmail3"  placeholder="密码">
 														</div>
 													</div>
 												</div>
@@ -473,7 +473,7 @@
 														<label for="inputEmail3" class="col-sm-2 control-label">Email</label>
 
 														<div class="col-sm-10">
-															<input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+															<input type="email" name="email" value="${sessionScope.USER_SESSION.email }" class="form-control" id="inputEmail3" placeholder="Email">
 														</div>
 													</div>
 												</div>
@@ -481,10 +481,10 @@
 											<div class="row">
 												<div class="col-md-6">
 													<div class="form-group">
-														<label for="inputEmail3" class="col-sm-2 control-label">手机</label>
+														<label for="inputEmail3"   class="col-sm-2 control-label" >号码</label>
 
 														<div class="col-sm-10">
-																<input type="email" class="form-control" id="inputEmail3" placeholder="号码">
+																<input type="email" class="form-control" name="phoneNumber" value="${sessionScope.USER_SESSION.phoneNumber }" id="inputEmail3" placeholder="号码">
 														</div>
 													</div>
 												</div>
@@ -495,7 +495,7 @@
 										</div>
 										<!-- /.box-body -->
 										<div class="box-footer">
-											<button type="submit" class="btn btn-info btn-lg pull-right ">保存</button>
+											<button type="button"id="btn_on" class="btn btn-info btn-lg pull-right ">保存</button>
 										</div>
 										<!-- /.box-footer -->
 									</form>
@@ -514,7 +514,7 @@
 					<div class="pull-right hidden-xs">
 						<b>Version</b> 2.4.0
 					</div>
-					<strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights reserved.
+					<strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">${sessionScope.USER_SESSION.username}</a>.</strong> All rights reserved.
 				</footer>
 
 				<!-- Control Sidebar -->
@@ -730,5 +730,11 @@
 			<!-- AdminLTE for demo purposes -->
 			<script src="${pgc }/index/dist/js/demo.js"></script>
 	</body>
-
+	<script type="text/javascript">
+		$(function(){
+			$("#btn_on").click(function(){
+				$("#form_user").submit();
+			})
+		});
+	</script>
 </html>
