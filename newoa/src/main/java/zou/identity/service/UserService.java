@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 import zou.common.vo.Message;
+import zou.common.vo.Page;
 import zou.identity.domain.Role;
 import zou.identity.domain.User;
 
@@ -24,4 +25,23 @@ public interface UserService {
 	 * @return
 	 */
 	Boolean CheckInUserName(String name,String id);
+	
+	/**
+	 *搜索全部user
+	 * @param pageNo 
+	 * @param search 
+	 * @return
+	 */
+	Page<User> findAllUser(String search, Integer pageNo);
+	
+	/**
+	 * 激活用户
+	 * @param id
+	 */
+	void editState(String id);
+	/**
+	 * 禁用
+	 * @param id
+	 */
+	void editStateFalse(String id);
 }

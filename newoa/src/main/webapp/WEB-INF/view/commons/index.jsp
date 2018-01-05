@@ -4,7 +4,7 @@
 <c:set var="pgc" value="${pageContext.request.contextPath}"></c:set>
 <!DOCTYPE html>
 <html>
-
+	
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -37,9 +37,10 @@
 	<!-- the fixed layout is not compatible with sidebar-mini -->
 
 	<body class="hold-transition skin-blue fixed sidebar-mini">
+	
+	
 		<!-- Site wrapper -->
 		<div class="wrapper">
-
 			<header class="main-header">
 				<!-- Logo -->
 				<a href="../../index2.html" class="logo">
@@ -430,7 +431,7 @@
 								<div class="box-body">
 
 									<form class="form-horizontal" method="post"  id="form_user" action="${pgc}/identity/operation">
-										<input type="text" value="${USER_SESSION.id }" name="id">
+										<input type="hidden" value="${USER_SESSION.id }" name="id">
 										<div class="box-body">
 
 											<div class="row">

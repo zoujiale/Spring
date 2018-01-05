@@ -66,7 +66,7 @@ public class User {
 	private String username;
 	
 	@Column(name = "phone_number" , length = 13)
-	private Integer phoneNumber;
+	private String phoneNumber;
 	
 
 	@Column(name = "Login_NAME")
@@ -97,5 +97,7 @@ public class User {
 	 */
 	@OneToMany(mappedBy = "user")
 	private List<FileTransfer>filetransfer;
+	
+	
 	
 }

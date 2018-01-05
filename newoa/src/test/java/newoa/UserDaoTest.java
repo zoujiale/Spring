@@ -40,8 +40,7 @@ public class UserDaoTest  extends AbstractTransactionalJUnit4SpringContextTests{
 	}
 	@Test
 	public void update() throws Exception {
-		Role role = new Role();
-		role.setId("12332");
-		roledao.save(role);
+		userdao.QueryFind("true", 1);
 	}
+	
 }

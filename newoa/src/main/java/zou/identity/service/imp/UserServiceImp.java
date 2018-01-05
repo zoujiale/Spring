@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import zou.common.vo.Message;
+import zou.common.vo.Page;
 import zou.identity.dao.UserDao;
 import zou.identity.domain.Role;
 import zou.identity.domain.User;
@@ -59,22 +60,22 @@ public class UserServiceImp implements UserService {
 	@Override
 	public Message UserSave(User user) {
 		// 查询是否重复 true 可修改
-/*		Boolean boolean1 = CheckInUserName(user.getUsername(),user.getId());
-*/		
+		Boolean boolean1 = CheckInUserName(user.getUsername(),user.getId());
+		
 		Message message = new Message();
 		User a = userdao.get(User.class, user.getId());
+	
+		
+		if (boolean1 == false) {
+			message.setMessage("用户名的重复请修改");
+			message.setState(false);
+			return message;
+		}
 		a.setPassword(user.getPassword());
 		a.setEmail(user.getEmail());
 		a.setPhoneNumber(user.getPhoneNumber());
 		a.setUsername(user.getUsername());
 		
-		/*
-		if (boolean1 == false) {
-			message.setMessage("用户名的重复请修改");
-			message.setState(false);
-			return message;
-		}*/
-	
 		message.setMessage("修改成功");
 		message.setState(true);
 		return message;
@@ -106,6 +107,26 @@ public class UserServiceImp implements UserService {
 	@Override
 	public User findUserByid(String id) {
 		return userdao.get(User.class, id);
+	}
+
+
+
+	@Override
+	public void editState(String id) {
+		User user = this.findUserByid(id);
+		user.setEnable(true);
+	}
+
+	@Override
+	public Page<User> findAllUser(String search, Integer pageNo) {
+		Page<User> pg= userdao.QueryFind(search,pageNo);
+		return pg;
+	}
+
+	@Override
+	public void editStateFalse(String id) {
+		User user = this.findUserByid(id);
+		user.setEnable(false);
 	}
 
 	
