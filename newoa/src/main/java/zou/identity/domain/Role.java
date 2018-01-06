@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -38,8 +39,9 @@ public class Role {
 	
 	private String name;
 	
-	private Boolean enable;
 	
+	@Column(length = 6)
+	private  String type;
 	
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "blog_user_role",

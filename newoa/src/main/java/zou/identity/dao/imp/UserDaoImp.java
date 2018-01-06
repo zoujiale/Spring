@@ -40,7 +40,7 @@ public class UserDaoImp extends CommonDaoimpl<User> implements UserDao {
 		else {
 		  query.select(root);
 		query.where(
-				builder.or(builder.like(root.get("phoneNumber"), search2),builder.like(root.get("username"),search2 ))
+				builder.or(builder.like(root.get("phoneNumber"), search2),builder.like(root.get("loginName"), search2),builder.like(root.get("username"),search2))
 				);
 		}
 		Long countNumber = this.CountNumber();
