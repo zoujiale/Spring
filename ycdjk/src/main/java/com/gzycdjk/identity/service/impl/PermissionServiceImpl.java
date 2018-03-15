@@ -1,6 +1,5 @@
 package com.gzycdjk.identity.service.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -17,12 +16,26 @@ import com.gzycdjk.identity.service.PermissionService;
 public class PermissionServiceImpl implements PermissionService{
 	@Autowired
 	PermissionDao permissiondao;
+
 	@Override
-	public List<Permission> findAllPermission() {
-		List<Permission> ps = this.permissiondao.findParentsId();
-		return ps ;
+	public Permission findByPermission(String id) {
+		Permission ps = new Permission();
+		
+		Permission permission = permissiondao.get(Permission.class, id);
+		
+		ps.setId(permission.getId());
+		ps.setOrderNumber(permission.getOrderNumber());
+		ps.setParent(permission.getParent());
+		ps.setPercode(permission.getPercode());
+		ps.setRoles(permission.getRoles());
+		ps.setText(permission.getText());
+		ps.setUrl(permission.getUrl());
+		return ps; 
 	}
-	
+	@Override
+	public List<Permission> findTopPermission() {
+		return this.permissiondao.findTopPermission();
+	}
 	
 	
 }

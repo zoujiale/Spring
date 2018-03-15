@@ -5,7 +5,6 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,11 +16,10 @@ import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.CollectionId;
 import org.hibernate.annotations.GenericGenerator;
-import org.springframework.core.annotation.Order;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.Getter;
@@ -58,13 +56,13 @@ public class Permission {
 	@OneToMany(mappedBy = "parent" )
 	@JsonProperty(value = "nodes")
 	@OrderBy(value = "orderNumber")
-	private List<Permission> child;
+	private List<Permission> nodes;
 	
 	/**
 	 * 上级
 	 */
+	
 	@ManyToOne()
-	@JsonBackReference
 	@JoinColumn(name = "parent_id")
 	private Permission parent;
 	
@@ -78,8 +76,9 @@ public class Permission {
 	/**
 	 * 有权使用角色的菜单
 	 */
-	@JsonBackReference
+	
 	@ManyToMany
+	@JsonBackReference
 	@JoinTable( name = "ycdjk_permission_role",joinColumns = { @JoinColumn(name = "permission_id")},
 	inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> roles;

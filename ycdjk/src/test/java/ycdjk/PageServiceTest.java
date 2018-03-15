@@ -22,6 +22,7 @@ import com.gzycdjk.identity.dao.PermissionDao;
 import com.gzycdjk.identity.dao.RoleDao;
 import com.gzycdjk.identity.dao.UserDao;
 import com.gzycdjk.identity.domain.Article;
+import com.gzycdjk.identity.domain.Permission;
 import com.gzycdjk.identity.domain.User;
 import com.gzycdjk.identity.service.RoleService;
 
@@ -41,6 +42,7 @@ public class PageServiceTest extends AbstractTransactionalJUnit4SpringContextTes
 	
 	@Resource
 	PermissionDao permissiondao;
+	
 	
 	@Test
 	public void f() throws Exception {
@@ -74,8 +76,9 @@ public class PageServiceTest extends AbstractTransactionalJUnit4SpringContextTes
 	
 	@Test
 	public void sf() throws Exception {
-		Page<User> gin = userdao.SqlGin(new Pageable(5, 1),"from User us where us.id='1'","us");
-		System.out.println(gin.getRecordList().size());
+		Permission permission = permissiondao.get(Permission.class, "2");
+		Permission parent = permission.getParent();
+		System.out.println(parent.getText());
 	}
 	
 	

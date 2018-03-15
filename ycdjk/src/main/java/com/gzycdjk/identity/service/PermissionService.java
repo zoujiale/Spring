@@ -6,6 +6,9 @@ import com.gzycdjk.identity.domain.Permission;
 
 public interface PermissionService {
 
-	List<Permission> findAllPermission();
+
+	Permission findByPermission(String id);
+
+	List<Permission> findTopPermission();
 
 }

@@ -20,7 +20,7 @@ import com.gzycdjk.identity.service.PermissionService;
 public class PermissionAction {
 	
 	@Autowired
-	PermissionService menuservice;
+	PermissionService permissionservice;
 	
 	@GetMapping
 	public ModelAndView getMenuList() {
@@ -31,15 +31,17 @@ public class PermissionAction {
 	@ResponseBody
 	public List<Permission> getPermission(){
 		
-		return this.menuservice.findAllPermission();
+		return this.permissionservice.findTopPermission();
 		
 	}
 	
 	@PostMapping("/get/{id}")
 	@ResponseBody
 	public Permission getPermissionById(@PathVariable("id") String id) {
-		System.out.println(id);
-		return null;
+		Permission ps = this.permissionservice.findByPermission(id);
+	
+		return ps;
+		
 		
 	}
 }

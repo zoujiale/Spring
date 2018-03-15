@@ -7,6 +7,7 @@ import com.gzycdjk.identity.domain.Permission;
 
 public interface PermissionDao extends CommonDao<Permission> {
 
-	List<Permission> findParentsId();
+
+	List<Permission> findTopPermission();
 
 }

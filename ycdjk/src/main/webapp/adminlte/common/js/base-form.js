@@ -321,6 +321,7 @@
      * @param json_data 回填的数据
      */
     BaseForm.prototype.initFormData = function (json_data) {
+    	
         if (!json_data)
             return;
         var form = this.$element;
