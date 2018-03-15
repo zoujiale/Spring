@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<link rel="shortcut icon" href="http://www.gzycdjk.com/img/t.ico" type="image/x-icon" />
+		<link rel="stylesheet" href="css/reset.css" />
+		<link rel="stylesheet" href="css/template.css" />
+		<link rel="stylesheet" href="css/about.css" />
+		<link rel="stylesheet" href="css/recruit.css" />
+		<link rel="stylesheet" href="css/talent.css" />
+		<script type="text/javascript" src="js/collection.js" ></script>
+		<script type="text/javascript" src="js/jquery-2.2.2.min.js"></script>
+		<title>人才招聘</title>
+		<style>
+			.nav li:nth-child(5) {
+				background-color: rgba(9, 117, 36, 0.61);
+			}
+		</style>
+	</head>
+
+	<body>
+		<!--头部  B-->
+		<div id="header_wrapper">
+			<header_components></header_components>
+		</div>
+		<!--头部  E-->
+
+		<!--内容部  B-->
+		<div id="body_wrapper">
+			<article>
+				<section id="bg">
+					<div class="bg">
+						<img src="http://www.gzycdjk.com/img/recruit.jpg">
+					</div>
+				</section>
+				<section id="nav_bg">
+					<div class="container" id="nav">
+						<ul>
+							<li>
+								<a href="recruit.html">用人之道</a>
+							</li>
+							<li class="on">
+								<a href="talent.html">人才招聘</a>
+							</li>
+							<li>
+								<a href="online_apply.html">在线应聘</a>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section id="recruit_info">
+					<div class="container">
+						<div class="join_banner">
+							<img src="http://www.gzycdjk.com/img/join_banner.jpg">
+						</div>
+						<div class="treatment">
+							<h3>我们的福利待遇</h3>
+							<ul>
+								<li>
+									<p>五险</p>
+									<p>周末双休</p>
+								</li>
+								<li>
+									<p>绩效奖金</p>
+									<p>医疗保险</p>
+								</li>
+								<li>
+									<p>员工旅游</p>
+									<p>专业培训</p>
+								</li>
+								<li>
+									<p>年终奖金</p>
+									<p>带薪年假</p>
+								</li>
+							</ul>
+						</div>
+						<div id="position">
+							<h3>在招职位</h3>
+							<ul>
+								<li v-for="(item,index) in positionList">
+									<a v-on:click="bompbox(index)">{{item.position}}</a>
+									<!--招聘职位弹框  B-->
+									<div class="showModal">
+										<div v-bind:class="{modal: isModal}" v-bind:id="index">
+											<div class="modal-header">
+												<div class="picture">
+													<img src="http://www.gzycdjk.com/img/people.png" height="32" width="32" />
+												</div>
+												<div class="title">
+													<h3>{{item.position}}</h3>
+													<span>发布日期：<span>{{item.date}}</span></span>&nbsp;&nbsp;&nbsp;&nbsp;
+													<span>招聘人数：<span>{{item.num}}</span></span>&nbsp;&nbsp;&nbsp;&nbsp;
+													<span>薪酬：<span>{{item.pay}}</span></span>
+												</div>
+												<div class="btn">
+													<button class="colse" v-on:click="closebox(index)">"关闭"</button>
+												</div>
+											</div>
+											<div class="modal-content">
+												<ol>
+													<li v-for=" info in item.demand">
+														<h4>{{info.title}}</h4>
+														<p>{{info.list1}}</p>
+														<p>{{info.list2}}</p>
+														<p>{{info.list3}}</p>
+														<p>{{info.list4}}</p>
+														<p>{{info.list5}}</p>
+														<p>{{info.list6}}</p>
+													</li>
+												</ol>
+												<ol>
+													<li v-for=" info in item.duty">
+														<h4>{{info.title}}</h4>
+														<p>{{info.list1}}</p>
+														<p>{{info.list2}}</p>
+														<p>{{info.list3}}</p>
+														<p>{{info.list4}}</p>
+														<p>{{info.list5}}</p>
+														<p>{{info.list6}}</p>
+													</li>
+												</ol>
+											</div>
+										</div>
+									</div>
+									<!--招聘职位弹框  E-->
+								</li>
+							</ul>
+							<div v-bind:class="{overlay: isOverlay}"></div>
+
+						</div>
+						<div class="join_us">
+							<div class="j_left">
+								<p>我们有舒适的办公环境，优厚的福利待遇。</p>
+								<p>你还在犹豫什么？赶紧加入我们吧！</p>
+								<button onclick="bompbox()">投递简历</button>
+							</div>
+							<div class="j_right">
+								<img src="http://www.gzycdjk.com/img/team.jpg" />
+							</div>
+						</div>
+						<!--邮箱弹框-->
+						<div class="show_email">
+							<div class="showModal">
+								<div class="modal" id="modal">
+									<div class="modal-header">
+										<div class="btn">
+											<button class="colse" onclick="closebox()">"关闭"</button>
+										</div>
+									</div>
+									<div class="modal-content">
+										<div class="c_pic">
+											<img src="http://www.gzycdjk.com/img/send.png">
+										</div>
+										<div class="c_text">
+											<p>将邮件发送到：<strong>service_ycdjk@163.com</strong></p>
+											<p>请备注好您要申请的职位，并配上您的简历及作品</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div id="overlay"></div>
+							<!--邮箱弹框js-->
+							<script>
+								function bompbox(){
+									$('#modal').css('display','block');
+									$('#overlay').css('position','fixed');
+								}
+								function closebox(){
+									$('#modal').css('display','none');
+									$('#overlay').css('position','static');
+								}
+							</script>
+						</div>
+					</div>
+				</section>
+			</article>
+
+		</div>
+		<!--内容部  E-->
+
+		<!--尾部  B-->
+		<div id="footer_wrapper">
+			<footer_components></footer_components>
+		</div>
+		<!--尾部  E-->
+		<!--分享jiathis-->
+		<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+		<!--引入vue组件模板-->
+		<script type="text/javascript" src="js/vue.js"></script>
+		<script type="text/javascript" src="vue/vue-resource.js"></script>
+		<script type="text/javascript" src="js/vueCom.js"></script>
+		<script type="text/javascript" src="vue/talentVue.js"></script>
+	</body>
+
+</html>

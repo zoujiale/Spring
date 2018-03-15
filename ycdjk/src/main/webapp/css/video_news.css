@@ -1,0 +1,56 @@
+/*头部样式   B*/
+/*头部样式  E*/
+
+/*内容部样式  B*/
+#news li{
+	font-size: 0;
+	margin-top: 15px;
+	-webkit-text-size-adjust: none;
+}
+div#news_video{
+	width: 350px;
+	height: 200px;
+	display: inline-block;
+	vertical-align: top;
+	position: relative;
+}
+#button button{
+	display: block;
+	position: absolute;
+	top: 70px;
+	left: 127px;
+	width: 50px;
+	height: 50px;
+	opacity: 0.9;
+	border: 0 none;
+	background: url(../video/pla.png);
+}
+div#news_txt{
+	width: 850px;
+	height: 200px;
+	padding: 20px 0 0 0;
+	font-size: 14px;
+	display: inline-block;
+	vertical-align: top;
+	box-sizing: border-box;
+}
+div#news_txt h3{
+	padding: 10px 0;
+    margin-bottom: 10px;
+    font-size: 18px;
+    line-height: 20px;
+    color: #000;
+    font-weight: bold;
+    border-bottom: 1px solid #e5e5e5;
+}
+div#news_txt p{
+	color: #666;
+    height: 120px;
+    line-height: 24px;
+    font-size: 14px;
+    overflow: hidden;
+}
+/*内容部样式  E*/
+
+/*尾部样式  B*/
+/*尾部样式  E*/

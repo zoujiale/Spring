@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<link rel="shortcut icon" href="http://www.gzycdjk.com/img/t.ico" type="image/x-icon" />
+		<link rel="stylesheet" href="css/reset.css" />
+		<link rel="stylesheet" href="css/template.css" />
+		<link rel="stylesheet" href="css/about.css" />
+		<link rel="stylesheet" href="css/contact.css" />
+		<script type="text/javascript" src="js/vue.js"></script>
+		<script type="text/javascript" src="js/collection.js" ></script>
+		<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=zNpyBtXBtPAeUvhD69l2Op8YFVRfjxNN"></script>
+		<title>联系我们</title>
+		<style>
+			.nav li:nth-child(6) {
+				background-color: rgba(9, 117, 36, 0.61);
+			}
+		</style>
+	</head>
+
+	<body>
+		<!--头部  B-->
+		<div id="header_wrapper">
+			<header_components></header_components>
+		</div>
+		<!--头部  E-->
+
+		<!--内容部  B-->
+		<div id="body_wrapper">
+			<article>
+				<section id="bg">
+					<div class="bg">
+						<img src="http://www.gzycdjk.com/img/contact.jpg">
+					</div>
+				</section>
+				<section id="nav_bg">
+					<div class="container" id="nav">
+						<ul>
+							<li class="on">
+								<a href="contact.html">联系我们</a>
+							</li>
+							<li>
+								<a href="friend.html">友情链接</a>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section id="map">
+					<div class="container">
+						<!--调用百度地图api生成地图  B-->
+						<div id="map_address"></div>
+						<script type="text/javascript" src="js/map.js"></script>
+						<!--调用百度地图api生成地图  E-->
+						<div id="info_adress">
+							<div class="company">
+								<h3>广州迎春大健康服务有限公司</h3>
+								<ul>
+									<li><span>售后邮箱：</span>service_ycdjk@163.com</li>
+									<li><span>销售邮箱：</span>sales_ycdjk@163.com</li>
+									<li><span>销售咨询：</span>020-80927473</li>
+									<li><span>研发合作/商务合作：</span>020-34003170</li>
+									<li><span>售后服务技术支持：</span>020-34479727</li>
+									<li><span>邮编：</span>510220</li>
+									<li><span>地址：</span>广东广州海珠区工业大道北67号凤凰创意园1号楼</li>
+								</ul>
+							</div>
+							<div class="kf_service">
+								<h3>在线客服</h3>
+								<ul>
+									<li><span>座机：</span>020-34479727</li>
+									<li><span>手机：</span>18826431020</li>
+									<li><span>微信：</span>18826431020</li>
+									<li>
+										<span>QQ：</span>
+										<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=208759871&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:208759871:41" alt="点击这里给我发消息" title="点击这里给我发消息"/></a>
+									</li>
+								</ul><div class="kfwx">
+									<img src="http://www.gzycdjk.com/img/kfwx.jpg">
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+			</article>
+		</div>
+		<!--内容部  E-->
+
+		<!--尾部  B-->
+		<div id="footer_wrapper">
+			<footer_components></footer_components>
+		</div>
+		<!--尾部  E-->
+         <!--分享jiathis-->
+		<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+		<!--引入vue组件模板-->
+		<script type="text/javascript" src="js/vueCom.js"></script>
+	</body>
+
+</html>

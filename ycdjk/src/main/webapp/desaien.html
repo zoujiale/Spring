@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<link rel="shortcut icon" href="http://www.gzycdjk.com/img/t.ico" type="image/x-icon" />
+		<link rel="stylesheet" href="css/reset.css" />
+		<link rel="stylesheet" href="css/template.css" />
+		<link rel="stylesheet" href="css/about.css" />
+		<link rel="stylesheet" href="css/product.css" />
+		<link rel="stylesheet" href="css/desaien.css" />
+		<script type="text/javascript" src="js/collection.js" ></script>
+		<script type="text/javascript" src="js/vue.js"></script>
+		<title>产品中心</title>
+		<style>
+			.nav li:nth-child(3) {
+				background: #188f36;
+			}
+			
+			.nav li:nth-child(4) {
+				background-color: rgba(9, 117, 36, 0.61);
+			}
+			.procudt_list li:nth-of-type(1) a{
+				position: relative;
+			}
+			.procudt_list li:nth-of-type(1) a:before{
+				position: absolute;
+				left: 10px;
+			    top: 4px;
+				content: "";
+				width: 20px;
+				height: 20px;
+				background: url(http://www.gzycdjk.com/img/flag_icon2.png)no-repeat;
+				z-index: 9;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!--头部  B-->
+		<div id="header_wrapper">
+			<header_components></header_components>
+		</div>
+		<!--头部  E-->
+
+		<!--内容部  B-->
+		<div id="body_wrapper">
+			<article>
+				<section id="bg">
+					<div class="bg">
+						<img src="http://www.gzycdjk.com/img/product.jpg">
+					</div>
+				</section>
+				<section id="nav_bg">
+					<div class="container" id="nav">
+					</div>
+				</section>
+				<!--<section id="details">
+				</section>-->
+				<section class="container" id="procudt">
+					<div class="procudt_list" id="procudt_list">
+						<h2>产品中心</h2>
+						<ul>
+							<li>
+								<a href="product.html">液体敷料</a>
+							</li>
+							<li>
+								<a href="product1.html">黄柏八味片</a>
+							</li>
+							<li>
+								<a href="product2.html">华蟾素胶囊</a>
+							</li>
+							<li>
+								<a href="">3D导向模版</a>
+							</li>
+						</ul>
+					</div>
+					<div class="product_type">
+						<h3>迎春产品展示</h3>
+						<div class="product_img">
+							<div id="big_img"><img src="http://www.gzycdjk.com/img/dse1.jpg" id="big"></div>
+							<div id="small_img">
+								<img src="http://www.gzycdjk.com/img/dse.jpg">
+								<img src="http://www.gzycdjk.com/img/dse1.jpg">
+								<img src="http://www.gzycdjk.com/img/dse.jpg">
+								<img src="http://www.gzycdjk.com/img/dse1.jpg">
+							</div>
+							<!--图片切换放大  B-->
+							<script>
+								var smallImg = document.getElementById('small_img');
+								var imgs = smallImg.getElementsByTagName('img');
+								var bigImg = document.getElementById('big');
+								for(var i = 0; i < imgs.length; i++) {
+									imgs[i].onclick = function() {
+										bigImg.src = this.src;
+									}
+								}
+							</script>
+							<!--图片切换放大  E-->
+						</div>
+						<div class="product_paramater">
+							<ul>
+								<li><span>产品名称：</span>德赛恩液体敷料</li>
+								<li><span>产品品牌：</span>Microcyn</li>
+								<li><span>产品规格：</span>50ml</li>
+								<li><span>招商区域：</span>全国</li>
+								<li><span>产品类别：</span>三类医疗器械</li>
+								<li><span>产品产地：</span>美国进口</li>
+							</ul>
+						</div>
+						<div class="product_details">
+							<div id="tabs0">
+								<ul class="menu0" id="menu0">
+									<li onclick="setTab(0,0)" class="hover">
+										<h4>产品详情</h4>
+									</li>
+									<li onclick="setTab(0,1)">
+										<h4>招商政策</h4>
+									</li>
+									<li onclick="setTab(0,2)">
+										<h4>代理要求</h4>
+									</li>
+									<li onclick="setTab(0,3)">
+										<h4>联系我们</h4>
+									</li>
+								</ul>
+								<div class="main" id="main0">
+									<ul class="block">
+										<li>
+											<h5>背景知识</h5>
+											<p>我国卫生部《抗菌药物临床应用指导原则》指出：抗菌药物的局部应用宜尽量避免，因局部应用比全身应用更容易导致耐药菌的产生。</p>
+											<p>德赛恩液体敷料是美国OCULUS创新公司生产的一种强力、广谱、非抗生素类物理杀菌剂。属于三类医疗器械。德赛恩杀菌谱广、且不会产生耐药性。Ⅱ、Ⅲ类切口术中腹腔冲洗，在没有取得病原学依据前可放心使用，有效降低感染几率、促进伤口愈合。</p>
+											<p>2004年获得欧盟CE认证、2005年获得美国FDA 510K上市证书、2014年获得CFDA Ⅲ 类医疗器械注册证。</p>
+										</li>
+										<li>
+											<h5>功能介绍</h5>
+											<p>德赛恩液体敷料是一种清创、冲洗、湿润急慢性伤口、溃疡、切口、擦伤与烧伤的超氧化溶液。 它不仅是可以安全迅速的杀灭细菌、芽孢、真菌和病毒，控制感染，而且还可以间接增加创面周围血液循环， 有促进创面愈合的功效。对人体内环境无残留，对生存环境无污染，是一种绿色的，能替代抗生素的广谱抗病原微生物类杀菌溶液。 对抗抗生素的耐药菌株如： 耐甲氧西林金黄色葡萄球菌MRSA,耐万古霉素粪肠球菌VRE；特殊细菌：结核杆菌，绿脓杆菌；病毒：人体免疫缺陷病毒I型HIV-I，均有杀灭效果。</p>
+											<p></p>
+										</li>
+										<li>
+											<h5>作用机制</h5>
+											<p>1、德赛恩可模仿机体嗜中性粒细胞的吞噬、溶解、吸收单细胞微生物的作用 。</p>
+											<p>2、德赛恩可与细胞膜中的脂质和蛋白质发生反应，形成一个二硫键，直接作用于细胞壁，使细胞壁连续性中断形成孔洞，德赛恩为低渗液体可通过孔洞进入细胞壁内使单细胞微生物胀大、破裂、死亡。</p>
+											<p>3、德赛恩抑制肥大细胞颗粒脱落，从而减少炎症介质释放，降低渗出粘连几率，而且使血管不收缩，加快伤口附近血液循环，促进伤口愈合。</p>
+											<p>4、促进成纤维细胞迁移活化使更多的成纤维细胞向伤口聚集转换为纤维细胞，促进胶原蛋白的形成，从而促进伤口愈合。</p>
+										</li>
+										<li>
+											<h5>专利技术</h5>
+											<p>德赛恩液体敷料采用最先进的专利技术MicrocynTechnology，已有11项核心专利通过美国认证。</p>
+											<p>.专利的点解室分解技术</p>
+											<p>.专利的氯离子交换技术</p>
+											<p>.长效稳定的活性氧与活性氯技术</p>
+											<p>使它如生理盐水般安全，活性氧能迅速杀灭广谱病原体，包括抗生素耐药菌株（如MRSA和VRE），病毒，真菌和孢子，同时活性氧能降低炎症反应，通过增加血流量来治疗组织。</p>
+										</li>
+										<li>
+											<h5>德赛恩使命</h5>
+											<p>临床应用广泛、广谱杀菌、安全高效、不会产生耐药性、无刺激、无毒副作用、无残留。</p>
+											<p>可用于II，III类切口、创面护理，同时也可用于术中腹腔冲洗，大大降低了术中及术后感染的发生率</p>
+											<p>促进伤口愈合，提高治愈率。可以在没有取得病原学依据的前提下放心使用，大大缩短了感染的治疗时间窗。</p>
+										</li>
+									</ul>
+									<ul>
+										<li>
+											<h5>利润导向为王</h5>
+											<p>——面向全国市场，诚招省、市、县级区域独家经销商</p>
+											<p>为维护您的利益，我们将市场细分到省、市、县甚至医院级区域，如果您有实力填补市场空白，我们将授予您区域市场独家经销权，保障您的利益。</p>
+											<p>——不断提供极具竞争力的产品组合</p>
+											<p>我们紧跟市场需求，提供您最具竞争力的产品组合。公司有多个重磅炸弹级产品正在开发中，很快将上市，这将确保您完善操作产品线，增强市场竞争力，达到长期获利目的。</p>
+											<p>——最贴近您的个性化专业服务支持</p>
+											<p>如果您对我们的公司、产品、服务有任何问题，请马上拨打我们的全国统一招商服务热线020-80927473。我们积极发展和各级经销商的战略合作伙伴关系，共享资源，提供招标、学术、营销等多方面的专业支持，针对不同需求经销商提供个性化服务。</p>
+										</li>
+										<li>
+											<h5>市场把握为重</h5>
+											<p>代理商索取招商资料，寄发招商资料。收集代理商资料/谈判并分析，认定代理资格。业务洽谈并签定代理合同。</p>
+											<p>有医院网络（医院终端分销商）。有专业推广队伍，能够长期推广产品。具备经济实力及相应财务处理能力。与当地政府事务和重要专家有良好的合作关系。</p>
+										</li>
+										<li>
+											<h5>招商支持为精</h5>
+											<p>帮助经销商进行培训。具体有产品知识培训、销售技巧培训、区域管理培训、谈判及团队建设培训、销售管理培训、招投标培训等</p>
+										</li>
+									</ul>
+									<ul>
+										<li>
+											<h5>代理要求</h5>
+											<p>有长期合作的决心、有完善的销售网络、具有较强的责任心和信心、具有一定的经济实力和良好的商业信誉、具有丰富的市场操作经验，较强的市场开发能力。</p>
+										</li>
+									</ul>
+									<ul>
+										<li>
+											<h5>联系方式</h5>
+											<div class="contact_way">
+												<ul style="display: block !important;">
+													<li>公司名称</li>
+													<li>广州迎春大健康服务有限公司</li>
+													<li>手机号码</li>
+													<li>18826431020</li>
+													<li>公司地址</li>
+													<li>广州市海珠区工业大道北67号1号楼2楼</li>
+													<li>即时通讯</li>
+													<li>020-34479727</li>
+													<li>公司电话</li>
+													<li>020-80927473</li>
+													<li>在线状态</li>
+													<li><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=208759871&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:208759871:41" alt="点击这里给我发消息" title="点击这里给我发消息"/></a></li>
+													<li>联系部门</li>
+													<li>客服部</li>
+													<li>备注</li>
+													<li>李小姐</li>
+												</ul>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<!--选项卡实现js-->
+						<script>
+							function setTab(m,n){
+								var tli = document.getElementById('menu'+m).getElementsByTagName('li');
+								var mli = document.getElementById("main"+m).getElementsByTagName('ul');
+								var list_height = document.getElementById('procudt_list');
+								for(var i = 0 ; i<tli.length; i++){
+									tli[i].className = i == n ? "hover":"";
+									mli[i].style.display = i == n ? "block":"none";
+									if(n==0){
+										list_height.style.height = 1665+'px';
+									}
+									if(n==1){
+										list_height.style.height = 1225+'px';
+									}
+									if(n==2){
+										list_height.style.height = 845+'px';
+									}
+									if(n==3){
+										list_height.style.height = 845+'px';
+									}
+								}
+							}
+						</script>
+					</div>
+				</section>
+			</article>
+		</div>
+		<!--内容部  E-->
+
+		<!--尾部  B-->
+		<div id="footer_wrapper">
+			<footer_components></footer_components>
+		</div>
+		<!--尾部  E-->
+		<!--分享jiathis-->
+		<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+		<!--引入vue组件模板-->
+		<script type="text/javascript" src="js/vueCom.js"></script>
+	</body>
+
+</html>

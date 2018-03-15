@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<link rel="shortcut icon" href="http://www.gzycdjk.com/img/t.ico" type="image/x-icon" />
+		<link rel="stylesheet" href="css/reset.css" />
+		<link rel="stylesheet" href="css/template.css" />
+		<link rel="stylesheet" href="css/about.css" />
+		<link rel="stylesheet" href="css/recruit.css" />
+		<link rel="stylesheet" href="css/online_apply.css" />
+		<script type="text/javascript" src="js/collection.js" ></script>
+		<script type="text/javascript" src="js/vue.js"></script>
+		<title>在线应聘</title>
+		<style>
+			.nav li:nth-child(5) {
+				background-color: rgba(9, 117, 36, 0.61);
+			}
+		</style>
+	</head>
+
+	<body>
+		<!--头部  B-->
+		<div id="header_wrapper">
+			<header_components></header_components>
+		</div>
+		<!--头部  E-->
+
+		<!--内容部  B-->
+		<div id="body_wrapper">
+			<article>
+				<section id="bg">
+					<div class="bg">
+						<img src="http://www.gzycdjk.com/img/recruit.jpg">
+					</div>
+				</section>
+				<section id="nav_bg">
+					<div class="container" id="nav">
+						<ul>
+							<li>
+								<a href="recruit.html">用人之道</a>
+							</li>
+							<li>
+								<a href="talent.html">人才招聘</a>
+							</li>
+							<li class="on">
+								<a href="online_apply.html">在线应聘</a>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section id="online_apply">
+					<div class="container">
+						<form action="" method="post">
+							<table width="1200" height="500" cellpadding="5" cellspacing="8">
+								<tbody>
+									<tr>
+										<td align="right">应聘职位：</td>
+										<td height="30" clospan="3" align="left">
+											<select name="job" id="job" style="width: 190px;" required="required">
+												<option value="产品专员">产品专员</option>
+												<option value="客服主管">客服主管</option>
+												<option value=" 行政文秘">行政文秘</option>
+												<option value="销售代表">销售代表</option>
+												<option value="人力资源主管">人力资源主管</option>
+												<option value="客户代表">客户代表</option>
+												<option value="商务助理/实习生">商务助理/实习生</option>
+												<option value="企划主管">企划主管</option>
+												<option value="医药耗材区域销售经理">医药耗材区域销售经理</option>
+												<option value=" 医药耗材推广代表"> 医药耗材推广代表</option>
+												<option value="医药耗材销售经理">医药耗材销售经理</option>
+											</select>
+											<span class="stars">*</span>
+										</td>
+									</tr>
+									<tr>
+										<td height="30" align="right">姓名：</td>
+										<td height="30" align="left">
+											<input type="text" name="name" id="name" required="required">
+											<span class="stars">*</span>
+										</td>
+										<td height="30" align="right">性别：</td>
+										<td height="30" align="left">
+											<table>
+												<tbody>
+													<tr>
+														<td><input class="sex" id="sex_0" type="radio" name="sex" for="sex_0"><label for="sex_0">先生</label></td>
+														<td><input class="sex" id="sex_1" type="radio" name="sex" for="sex_1"><label for="sex_1">女士</label></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="30" align="right">年龄：</td>
+										<td height="30" align="left">
+											<input type="number" name="age" id="age" min="18" max="120">
+										</td>
+										<td height="30" align="right">学历：</td>
+										<td height="30" align="left"><input type="text" name="education" id="education" style="width:190px"></td>
+									</tr>
+									<tr>
+										<td height="30" align="right">身份证号：</td>
+										<td height="30" align="left"><input type="text" name="card" id="card"></td>
+										<td height="30" align="right">民族：</td>
+										<td height="30" align="left"><input type="text" name="nation" id="nation"></td>
+									</tr>
+									<tr>
+										<td height="30" align="right">联系电话：</td>
+										<td height="30" align="left">
+											<input type="text" name="tel" id="tel" required="required">
+											<span class="stars">*</span>
+										</td>
+										<td height="30" align="right">E-mail：</td>
+										<td height="30" align="left">
+											<input type="email" name="user_email" id="email" required="required">
+											<span class="stars">*</span>
+										</td>
+									</tr>
+									<tr>
+										<td height="30" align="right">家庭地址：</td>
+										<td height="30" align="left"><input type="text" name="adress" id="adress"></td>
+										<td height="30" align="right">邮政编码：</td>
+										<td height="30" align="left"><input type="text" name="postCode" id="postCode"></td>
+									</tr>
+									<tr>
+										<td height="30" align="right">毕业院校：</td>
+										<td height="30" align="left"><input type="text" name="school" id="school"></td>
+										<td height="30" align="right">专业：</td>
+										<td height="30" align="left"><input type="text" name="professional" id="professional"></td>
+									</tr>
+									<tr>
+										<td height="30" align="right">英文水平：</td>
+										<td height="30" align="left">
+											<select name="level" id="level">
+												<option value="六级以下">六级以上</option>
+												<option value="六级">六级</option>
+												<option value="四级">四级</option>
+												<option value="四级以下">四级以下</option>
+											</select>
+										</td>
+										<td height="30" align="right">计算机水平：</td>
+										<td height="30" align="left">
+											<select name="computer" id="computer">
+												<option value="精通">精通</option>
+												<option value="熟练">熟练</option>
+												<option value="了解">了解</option>
+											</select>
+										</td>
+									</tr>
+									<tr>
+										<td height="30" align="right">待遇要求：</td>
+										<td height="30" align="left" colspan="3"><input type="text" name="treatment" id="treatment"></td>
+									</tr>
+									<tr>
+										<td height="30" align="right">籍贯：</td>
+										<td height="30" align="left" colspan="3"><input type="text" name="native" id="native"></td>
+									</tr>
+									<tr>
+										<td height="30" align="right">工作经历：</td>
+										<td height="100" align="left" colspan="3" valign="middle">
+											<textarea name="workExp" rows="2" cols="20" id="workExp" style="height:80px;width:800px;" required="required"></textarea>
+											<span class="stars">*</span>
+										</td>
+									</tr>
+									<tr>
+										<td height="30" align="right">教育情况：</td>
+										<td height="100" align="left" colspan="3" valign="middle">
+											<textarea name="educationalExp" rows="2" cols="20" id="educationalExp" style="height:80px;width:800px;"></textarea>
+										</td>
+									</tr>
+									<tr>
+										<td height="30" align="right">家庭状况：</td>
+										<td height="100" align="left" colspan="3" valign="middle">
+											<textarea name="family" rows="2" cols="20" id="family" style="height:80px;width:800px;"></textarea>
+										</td>
+									</tr>
+									<tr>
+										<td height="40" align="right">&nbsp;</td>
+										<td height="60" align="left" colspan="3"><input type="submit" name="buton1" class="yp_btn" id="button1" value="提交应聘" onclick=""></td>
+									</tr>
+								</tbody>
+							</table>
+						</form>
+					</div>
+				</section>
+			</article>
+		</div>
+		<!--内容部  E-->
+
+		<!--尾部  B-->
+		<div id="footer_wrapper">
+			<footer_components></footer_components>
+		</div>
+		<!--尾部  E-->
+        <!--分享jiathis-->
+		<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+		<!--引入vue组件模板-->
+		<script type="text/javascript" src="js/vueCom.js"></script>
+	</body>
+
+</html>

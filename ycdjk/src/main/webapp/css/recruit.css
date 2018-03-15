@@ -1,0 +1,9 @@
+/*内容部样式   B*/
+.pic {
+	margin-top: -10px;
+    box-shadow: 1px 1px 30px 7px #c7bdc4;
+}
+.pic img{
+	height: 290px !important;
+}
+/*内容部样式   E*/

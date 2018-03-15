@@ -1,0 +1,80 @@
+/*头部样式  B*/
+
+
+/*头部样式  E*/
+
+
+/*内容部样式   B*/
+
+section#online_apply {
+	background-color: rgba(207, 225, 247, 0.41);
+}
+
+@media screen and (max-width:1216px) {
+	#online_apply {
+		width:1200px;
+	}
+}
+
+section#online_apply form {
+	padding: 30px;
+	overflow: hidden;
+}
+
+#online_apply table tr {
+	margin-bottom: 10px;
+}
+
+#online_apply table td {
+	width: 105px;
+	height: 30px;
+	font-size: 14px;
+	line-height: 30px;
+}
+
+#online_apply table td select {
+	height: 30px;
+	width: 190px;
+}
+
+#online_apply table td input {
+	height: 26px;
+	width: 188px;
+	border: 1px solid #aaaaaa;
+	padding-left: 0;
+}
+
+input#sex_0,
+input#sex_1 {
+	width: 13px !important;
+	height: 13px !important;
+	border: 0 !important;
+	padding-left: 0 !important;
+}
+
+input#button1 {
+	color: #ffffff;
+	width: 125px !important;
+	height: 30px !important;
+	line-height: 30px;
+	border: none !important;
+	border-radius: 8px;
+	background: #6ea7ec;
+}
+
+span.stars {
+	color: red;
+}
+
+
+/*内容部样式   E*/
+
+
+/*尾部样式   B*/
+
+div#footer_wrapper {
+	margin-top: 0px;
+}
+
+
+/*尾部样式   E*/

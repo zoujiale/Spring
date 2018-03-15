@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="shortcut icon" href="img/t.ico" type="image/x-icon" />
+		<link rel="stylesheet" href="css/reset.css" />
+		<link rel="stylesheet" href="css/template.css" />
+		<link rel="stylesheet" href="css/about.css" />
+		<link rel="stylesheet" href="css/pagination.css" />
+		<link rel="stylesheet" href="css/video_news.css" />
+		<script type="text/javascript" src="js/jquery-2.2.2.min.js"></script>
+		<title>视频资讯</title>
+		<style>
+			
+			.nav li:nth-child(1){
+				background: #188f36;
+			}
+			.nav li:nth-child(3){
+				background-color: rgba(9, 117, 36, 0.61);
+			}
+		</style>
+	</head>
+	<body>
+		<!--头部  B-->
+		<div id="header_wrapper">
+			<header_components></header_components>
+		</div>
+		<!--头部  E-->
+		
+		<!--内容部  B-->
+		<div id="body_wrapper">
+			<article>
+				<section id="bg">
+					<div class="bg">
+						<img src="img/news.jpg">
+					</div>
+				</section>
+				<section id="nav_bg">
+					<div class="container" id="nav">
+						<ul>
+							<li><a href="news.html">公司新闻</a></li>
+							<li><a href="industry_news.html">业界资讯</a></li>
+							<li class="on"><a href="purpose.html">视频资讯</a></li>
+						</ul>
+					</div>
+				</section>
+				<section id="news">
+					<div class="container">
+						<ul>
+						<li v-for="(item3,index) in videoList">
+							<div id="news_video">
+								<video v-bind:id="index" class="video" v-bind:poster="item3.picture" width="300" height="200" preload>
+									<source v-bind:src="item3.video1" type="video/mp4"></source>
+									<source v-bind:src="item3.video2" type="video/ogg"></source>
+									Your browser does not support HTML5 video.
+								</video>
+								<div id="button">
+									<button v-bind:id="item3.btnId" v-on:click="beginPlay(index,item3.btnId)"></button>
+								</div>
+							</div>
+							<div id="news_txt">
+								<h3>标题标题标题标题标题</h3>
+									<p>{{item3.message}}</p>
+								</div>
+						</li>
+					</ul>
+					</div>
+				</section>
+			</article>
+		</div>
+		<!--内容部  E-->
+		
+		<!--尾部  B-->
+		<div id="footer_wrapper">
+			<footer_components></footer_components>
+		</div>
+		<!--尾部  E-->
+		
+		<!--引入vue组件模板-->
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<script type="text/javascript" src="vue/vue-resource.js" ></script>
+		<script type="text/javascript" src="js/vueCom.js" ></script>
+		<script type="text/javascript" src="vue/indexVue.js" ></script>
+	</body>
+</html>

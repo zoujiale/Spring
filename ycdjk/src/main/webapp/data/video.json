@@ -1,0 +1,32 @@
+{
+	"status": 0,
+	"message": "success",
+	"result": {
+		"list3": [
+			{
+			"btnId": "one",
+			"picture": "http://www.gzycdjk.com/video/poster1.jpg",
+			"video1": "http://www.gzycdjk.com/video/video1.mp4",
+			"video2": "http://www.gzycdjk.com/video/video1.ogg",
+			"title" :"胡季强：十年以后中国最大产业将是大健康产业",
+			 "message": "胡季强表示，十年以后中国最大的产业将是大健康产业。成为第一大产业的条件是达到整个大健康中国GDP10%，而美国去年医疗产业占GDP16%多，中国去年的GDP是63万亿，也就是说十点几万亿美金，十年以后按照这样的增长速度将达到120到150万亿。另外，胡季强指出，随着中国社会老龄化的加剧，三亿人的养老就会成为巨大的产业，所以大健康产业可能中国所有产业当中未来情景最好的产业。"
+			},
+			{
+			"btnId": "two",
+			"picture": "http://www.gzycdjk.com/video/poster2.jpg",
+			"video1": "http://www.gzycdjk.com/video/video2.mp4",
+			"video2": "http://www.gzycdjk.com/video/video2.ogg",
+			"title" : "中国医疗器械全国统一大市场与全球健康产业大平台",
+			"message": "为响应国务院部署建立各行业全国统一大市场的要求，实现互联网 流通行动计划，促进我国医疗器械与健康产业发展。由国家卫生计生委中国医学装备协会、义乌市政府、国药集团、浙江中国小商品城集团股份有限公司、中世贸发投资有限公司及浙江美森进出口有限公司等相关单位共同发起，在国务院颁布的9个试点城市中选择浙江省义乌市作为全国统一大市场试点城市，共同建设线上与线下互联、国内与国外互通的中国医疗器械全国统一大市场与全球健康产业大平台。"
+			},
+			{
+			"btnId": "three",
+			"picture": "http://www.gzycdjk.com/video/poster3.jpg",
+			"video1": "http://www.gzycdjk.com/video/video3.mp4",
+			"video2": "http://www.gzycdjk.com/video/video3.ogg",
+			"title" : "中国医药市场整体保持持续增长",
+			 "message": "医药行业是全球经济的重要组成部分，随着世界经济的持续发展以及全球老龄化问题的加剧，全球医疗支出不断增加，医药市场整体保持持续增长。根据统计数据，2005年至2015年，全球医药市场销售额由5,988亿美元增长到10,688亿美元，年平均增长率为5.98%。根据预测，2014年至2019年全球医药市场预期仍将保持年平均约4.80%的增长率，其中，亚洲、非洲与澳洲医药市场的增长速度将高于全球平均速度，年复合增长将达到6.90%至9.90%，新兴市场将成为未来全球医药市场主要的增长点。"
+			}
+		]
+	}
+}

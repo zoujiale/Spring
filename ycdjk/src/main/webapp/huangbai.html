@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<link rel="shortcut icon" href="http://www.gzycdjk.com/img/t.ico" type="image/x-icon" />
+		<link rel="stylesheet" href="css/reset.css" />
+		<link rel="stylesheet" href="css/template.css" />
+		<link rel="stylesheet" href="css/about.css" />
+		<link rel="stylesheet" href="css/product.css" />
+		<link rel="stylesheet" href="css/desaien.css" />
+		<script type="text/javascript" src="js/collection.js" ></script>
+		<script type="text/javascript" src="js/vue.js"></script>
+		<title>产品中心</title>
+		<style>
+			.nav li:nth-child(3) {
+				background: #188f36;
+			}
+			
+			.nav li:nth-child(4) {
+				background-color: rgba(9, 117, 36, 0.61);
+			}
+			.procudt_list li:nth-of-type(2) a{
+				position: relative;
+			}
+			.procudt_list li:nth-of-type(2) a:before{
+				position: absolute;
+				left: 10px;
+			    top: 4px;
+				content: "";
+				width: 20px;
+				height: 20px;
+				background: url(http://www.gzycdjk.com/img/flag_icon2.png)no-repeat;
+				z-index: 9;
+			}
+			/*列表高度*/
+			.procudt_list {
+			    height: 1335px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!--头部  B-->
+		<div id="header_wrapper">
+			<header_components></header_components>
+		</div>
+		<!--头部  E-->
+
+		<!--内容部  B-->
+		<div id="body_wrapper">
+			<article>
+				<section id="bg">
+					<div class="bg">
+						<img src="http://www.gzycdjk.com/img/product.jpg">
+					</div>
+				</section>
+				<section id="nav_bg">
+					<div class="container" id="nav">
+					</div>
+				</section>
+				<!--<section id="details">
+				</section>-->
+				<section class="container" id="procudt">
+					<div class="procudt_list" id="procudt_list">
+						<h2>产品中心</h2>
+						<ul>
+							<li>
+								<a href="product.html">液体敷料</a>
+							</li>
+							<li>
+								<a href="product1.html">黄柏八味片</a>
+							</li>
+							<li>
+								<a href="product2.html">华蟾素胶囊</a>
+							</li>
+							<li>
+								<a href="">3D导向模版</a>
+							</li>
+						</ul>
+					</div>
+					<div class="product_type">
+						<h3>迎春产品展示</h3>
+						<div class="product_img">
+							<div id="big_img"><img src="http://www.gzycdjk.com/img/hbbwp1.jpg" id="big"></div>
+							<div id="small_img">
+								<img src="http://www.gzycdjk.com/img/hbbwp.jpg">
+								<img src="http://www.gzycdjk.com/img/hbbwp1.jpg">
+								<img src="http://www.gzycdjk.com/img/hbbwp2.jpg">
+								<img src="http://www.gzycdjk.com/img/hbbwp3.jpg">
+							</div>
+							<!--图片切换放大  B-->
+							<script>
+								var smallImg = document.getElementById('small_img');
+								var imgs = smallImg.getElementsByTagName('img');
+								var bigImg = document.getElementById('big');
+								for(var i = 0; i < imgs.length; i++) {
+									imgs[i].onclick = function() {
+										bigImg.src = this.src;
+									}
+								}
+							</script>
+							<!--图片切换放大  E-->
+						</div>
+						<div class="product_paramater">
+							<ul>
+								<li><span>产品名称：</span>黄柏八味片</li>
+								<li><span>产品品牌：</span>兴蒙制药</li>
+								<li><span>产品规格：</span> 0.5g*36片/瓶 *1/盒</li>
+								<li><span>招商区域：</span>广东省</li>
+								<li><span>产品类别：</span>药品</li>
+								<li><span>产品产地：</span>中国湖南</li>
+							</ul>
+						</div>
+						<div class="product_details">
+							<div id="tabs0">
+								<ul class="menu0" id="menu0">
+									<li onclick="setTab(0,0)" class="hover">
+										<h4>产品详情</h4>
+									</li>
+									<li onclick="setTab(0,1)">
+										<h4>招商政策</h4>
+									</li>
+									<li onclick="setTab(0,2)">
+										<h4>代理要求</h4>
+									</li>
+									<li onclick="setTab(0,3)">
+										<h4>联系我们</h4>
+									</li>
+								</ul>
+								<div class="main" id="main0">
+									<ul class="block">
+										<li>
+											<h5>背景知识</h5>
+											<p> 黄柏八味片精选蒙古高原道地药材，不经炮炙直接入药，保证原药纯性。根据蒙医经典理论成分，组方独特。</p>
+											<p>中医理论：全方清利结合，瘀热并治，血水通调，共奏清热凉血，利尿通淋，活血通经、固精扶正之功效。针对由肾热引起的湿热内蕴、下焦瘀阻、生毒化火、湿热下注、郁热下注有显著疗效。</p>
+											<p>临床疾病：现代临床用于治疗泌尿、生殖系统感染炎症，淋病及附件炎、月经过多。</p>
+										</li>
+										<li>
+											<h5>功能介绍</h5>
+											<p>黄柏八味片五大功效分别为：抗真菌、消炎、凉血止血、解热、抗细菌。</p>
+											<p>临 床 应 用：对泌尿外科（前列腺炎、肾盂肾炎、膀胱炎、尿道炎、尿中带血、癃闭）、男科（遗精、滑精、精不液化）、妇科（附件炎、盆腔炎、输卵管炎、月经过多、便血、崩漏带下）、皮肤性病科（淋病、湿疹、皮炎、生殖器疱疹）有明显效果</p>
+										</li>
+										<li>
+											<h5>效果对比</h5>
+											<p>1、治疗妇科炎症——缓解腰酸腹痛，减少远期复发率。与传统药物千金片相比，黄柏八味片可有效降低附件炎的复发率。</p>
+											<p>2、治疗尿路感染——快速缓解尿频，尿急尿痛。本研究显示，与常规治疗相比，治疗组在常规治疗基础上加黄柏八味片，上下尿路感染引起的尿频，尿急，尿痛等方面的改善均优于对照组。</p>
+											<p>3、黄柏八味散治疗青春期功能失调子宫出血的临床疗效。传统蒙药治疗功能失调性子宫出血，疗效肯定，亦可避免应用激素或其它治疗带来的不良反应，且用药成本低廉，不破坏子宫内膜， 服用药物时间短，疗效可靠等优点。</p>
+										</li>
+										<li>
+											<h5>八百年经典-黄柏八味片</h5>
+											<p>全国独家、国家医保、蒙医名验方、纯中药制剂。【批准文号】国药准字Z20123010  【成    份】黄柏、香墨、栀子、甘草、红花、荜茇、牛胆粉、黑云香。 【用法用量】口服，一次3～6片，一日2～3次。【规格】 0.5g*36片/瓶 *1/盒。0.5g*30片/瓶 *3/盒【有  效 期】24个月</p>
+										</li>
+										<!--<li>
+											<h5>德赛恩使命</h5>
+											<p>临床应用广泛、广谱杀菌、安全高效、不会产生耐药性、无刺激、无毒副作用、无残留。</p>
+											<p>可用于II，III类切口、创面护理，同时也可用于术中腹腔冲洗，大大降低了术中及术后感染的发生率</p>
+											<p>促进伤口愈合，提高治愈率。可以在没有取得病原学依据的前提下放心使用，大大缩短了感染的治疗时间窗。</p>
+										</li>-->
+									</ul>
+									<ul>
+										<li>
+											<h5>利润导向为王</h5>
+											<p>——面向全国市场，诚招省、市、县级区域独家经销商</p>
+											<p>为维护您的利益，我们将市场细分到省、市、县甚至医院级区域，如果您有实力填补市场空白，我们将授予您区域市场独家经销权，保障您的利益。</p>
+											<p>——不断提供极具竞争力的产品组合</p>
+											<p>我们紧跟市场需求，提供您最具竞争力的产品组合。公司有多个重磅炸弹级产品正在开发中，很快将上市，这将确保您完善操作产品线，增强市场竞争力，达到长期获利目的。</p>
+											<p>——最贴近您的个性化专业服务支持</p>
+											<p>如果您对我们的公司、产品、服务有任何问题，请马上拨打我们的全国统一招商服务热线020-80927473。我们积极发展和各级经销商的战略合作伙伴关系，共享资源，提供招标、学术、营销等多方面的专业支持，针对不同需求经销商提供个性化服务。</p>
+										</li>
+										<li>
+											<h5>市场把握为重</h5>
+											<p>代理商索取招商资料，寄发招商资料。收集代理商资料/谈判并分析，认定代理资格。业务洽谈并签定代理合同。</p>
+											<p>有医院网络（医院终端分销商）。有专业推广队伍，能够长期推广产品。具备经济实力及相应财务处理能力。与当地政府事务和重要专家有良好的合作关系。</p>
+										</li>
+										<li>
+											<h5>招商支持为精</h5>
+											<p>帮助经销商进行培训。具体有产品知识培训、销售技巧培训、区域管理培训、谈判及团队建设培训、销售管理培训、招投标培训等</p>
+										</li>
+									</ul>
+									<ul>
+										<li>
+											<h5>代理要求</h5>
+											<p>有长期合作的决心、有完善的销售网络、具有较强的责任心和信心、具有一定的经济实力和良好的商业信誉、具有丰富的市场操作经验，较强的市场开发能力。</p>
+										</li>
+									</ul>
+									<ul>
+										<li>
+											<h5>联系方式</h5>
+											<div class="contact_way">
+												<ul style="display: block !important;">
+													<li>公司名称</li>
+													<li>广州迎春大健康服务有限公司</li>
+													<li>手机号码</li>
+													<li>18826431020</li>
+													<li>公司地址</li>
+													<li>广州市海珠区工业大道北67号1号楼2楼</li>
+													<li>即时通讯</li>
+													<li>020-34479727</li>
+													<li>公司电话</li>
+													<li>020-80927473</li>
+													<li>在线状态</li>
+													<li><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=208759871&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:208759871:41" alt="点击这里给我发消息" title="点击这里给我发消息"/></a></li>
+													<li>联系部门</li>
+													<li>客服部</li>
+													<li>备注</li>
+													<li>李小姐</li>
+												</ul>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<!--选项卡实现js-->
+						<script>
+							function setTab(m,n){
+								var tli = document.getElementById('menu'+m).getElementsByTagName('li');
+								var mli = document.getElementById("main"+m).getElementsByTagName('ul');
+								var list_height = document.getElementById('procudt_list');
+								for(var i = 0 ; i<tli.length; i++){
+									tli[i].className = i == n ? "hover":"";
+									mli[i].style.display = i == n ? "block":"none";
+									if(n==0){
+										list_height.style.height = 1340+'px';
+									}
+									if(n==1){
+										list_height.style.height = 1225+'px';
+									}
+									if(n==2){
+										list_height.style.height = 845+'px';
+									}
+									if(n==3){
+										list_height.style.height = 845+'px';
+									}
+								}
+							}
+						</script>
+					</div>
+				</section>
+			</article>
+		</div>
+		<!--内容部  E-->
+
+		<!--尾部  B-->
+		<div id="footer_wrapper">
+			<footer_components></footer_components>
+		</div>
+		<!--尾部  E-->
+		<!--分享jiathis-->
+		<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+		<!--引入vue组件模板-->
+		<script type="text/javascript" src="js/vueCom.js"></script>
+	</body>
+
+</html>

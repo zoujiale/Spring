@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	version="3.1">
+
+	<welcome-file-list>
+		<welcome-file>/WEB-INF/view/commons/index/index.jsp</welcome-file>
+	</welcome-file-list>
+
+	<!-- 配置一个整个应用都有效的参数，这个参数会放到ServletContext对象里面 -->
+	<context-param>
+		<!-- 在集成Spring的时候，这个名字是固定的，表示用来指定Spring的配置文件位置 -->
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath*:spring/applicationContext*.xml</param-value>
+	</context-param>
+
+	<!-- 在Servlet里面，监听器是最早初始化的 -->
+	<!-- 通过监听器完成Spring的初始化，好处：在Servlet任何的位置，都可以得到Spring的容器（ApplicationContext） -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+	<!-- 下面的过滤器，是为了确保整个请求从开始到结束，都有session，而且整个请求里面只获取一次session！ -->
+	<filter>
+		<filter-name>org.springframework.orm.hibernate5.support.OpenSessionInViewFilter</filter-name>
+		<filter-class>com.gzycdjk.commons.filter.OpenSessionInViewFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>org.springframework.orm.hibernate5.support.OpenSessionInViewFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<filter>
+		<filter-name>org.springframework.web.filter.CharacterEncodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>org.springframework.web.filter.CharacterEncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+
+
+	<!-- 通用的 -->
+	<servlet>
+		<servlet-name>commons</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>commons</servlet-name>
+		<url-pattern>/commons/*</url-pattern>
+	</servlet-mapping>
+
+	<!-- 用户模块 -->
+	<servlet>
+		<servlet-name>identity</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<multipart-config></multipart-config>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>identity</servlet-name>
+		<url-pattern>/identity/*</url-pattern>
+	</servlet-mapping>
+
+
+
+	<!--在这里配置shiro的filter -->
+	<!-- shiro过虑器，DelegatingFilterProxy通过代理模式将spring容器中的bean和此filter关联起来 -->
+	<filter>
+		<filter-name>shiroFilter</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+		<!-- 设置true由servlet容器控制filter的生命周期 -->
+		<init-param>
+			<param-name>targetFilterLifecycle</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<!-- 设置spring容器filter的bean id，如果不设置则找与filter-name一致的bean -->
+		<init-param>
+			<param-name>targetBeanName</param-name>
+			<param-value>shiroFilter</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>shiroFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+</web-app>
+
+
+
