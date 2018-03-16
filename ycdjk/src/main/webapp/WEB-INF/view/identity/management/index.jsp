@@ -308,7 +308,8 @@
 				console.log(paarams);
 				 $.post('${pgc}/identity/management/save', {'paarams': JSON.stringify(paarams)}, function(data) {
                     //提示以及其他逻辑
-					if (data[500]) {
+                    var list=eval("("+data+")");
+					if (list['500']) {
 						alert(data[500]);
 						return;
 					}
@@ -474,15 +475,19 @@
 					}
 	                var uid = $("#uid").val();
 	                $.post('${pgc}/identity/management/edit', { 'id': uid }, function(data) {
-	                    form.initFormData(data);
-	                    $('#nav-tab-edit').click();
+	                	 var list=eval("("+data+")");
+	                	 delete list["roles"];
+	                	 console.log(list);
+	                	form.initFormData(list);
+	                    $('#nav-tab-edit').click(); 
 	                });
 	                break;
 	            case 'delete':
 	                var uid = $("#uid").val();
 	                modals.confirm('确认删除？', function() {
 	                	 $.post('${pgc}/identity/management/delete', { 'id': uid }, function(data) {
-	                		 modals.info(data.message);
+	                		 var list=eval("("+data+")");
+	                		 modals.info(list['message']);
 	 	                });
 	                   
 	                });

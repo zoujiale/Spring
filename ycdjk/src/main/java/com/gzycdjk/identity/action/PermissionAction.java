@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.gzycdjk.commons.pojo.Menu;
 import com.gzycdjk.identity.domain.Permission;
 import com.gzycdjk.identity.service.PermissionService;
 

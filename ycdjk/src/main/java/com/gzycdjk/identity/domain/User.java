@@ -16,7 +16,7 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.alibaba.fastjson.annotation.JSONField;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -57,8 +57,8 @@ public class User {
 	/**
 	 * 角色对应的角色列表
 	 */
-	@JsonBackReference
 	@ManyToMany(mappedBy = "users")
+	@JSONField(serialize = false) 
 	private Set<Role> roles; 
 	
 	private String email;
@@ -77,6 +77,7 @@ public class User {
 	/**
 	 * 出生日期
 	 */
+	@JSONField(format = "yyyy-MM-dd")  
 	private Date birthdate;
 	
 	

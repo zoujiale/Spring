@@ -108,18 +108,7 @@ function deleteEmptyProp(obj) {
 }
 
 function ajaxPost(url, params, callback) {
-    var result = null;
-    var headers = {};
-    headers['CSRFToken'] = jQuery("#csrftoken").val();
-
-    console.log("before remove empty prop:");
-    console.log(params);
-    if (params && typeof params == "object") {
-        params = deleteEmptyProp(params);
-    }
-    console.log("after remove empty prop:");
-    console.log(params);
-
+	result = {};
     jQuery.ajax({
         type: 'post',
         async: false,

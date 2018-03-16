@@ -243,7 +243,8 @@
                 	urlist.push(urObj);
                 });
                 $.post(basePath+"/role/userrole/save",{"urlist":JSON.stringify(urlist)},function(data){
-                	if(data.state==true){                		
+                	var list=eval("("+data+")");
+                	if(list["state"]==true){                		
                 		selectedTable.draw();
                 		unselectedTable.draw();                		
                 	}
@@ -282,7 +283,8 @@
                 	urlist.push(urObj);
 				})
 				$.post(basePath+"/role/userrole/delete",{"urlist":JSON.stringify(urlist)},function(data){
-					if(data.state){
+					var list=eval("("+data+")");
+					if(list['state'] == true){
 						 unselectedTable.draw();
 						 selectedTable.draw();             		
 					}

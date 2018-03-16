@@ -11,6 +11,8 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -35,7 +37,7 @@ public class Article {
 	 * 标题
 	 */
 	private String title;
-	
+	@JSONField(format = "yyyy-MM-dd")  
 	@Column(name = "create_date")
 	private Date createDate;
 	/**

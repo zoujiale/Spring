@@ -18,8 +18,10 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.Getter;
@@ -76,9 +78,7 @@ public class Permission {
 	/**
 	 * 有权使用角色的菜单
 	 */
-	
 	@ManyToMany
-	@JsonBackReference
 	@JoinTable( name = "ycdjk_permission_role",joinColumns = { @JoinColumn(name = "permission_id")},
 	inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> roles;

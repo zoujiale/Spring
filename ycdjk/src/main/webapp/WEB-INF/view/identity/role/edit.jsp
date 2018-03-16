@@ -71,9 +71,10 @@
 					var params = form.getFormSimpleData();
 					
 					console.log(params)
-					$.post(basePath+'/role/save', {'params': JSON.stringify(params)}, function(ms) {
-						console.log(ms)
-						if(ms.state == true){
+					ajaxPost(basePath+'/role/save', {'params': JSON.stringify(params)}, function(ms) {
+						
+						console.log(ms.state);
+						if(ms){
 							
 							 if(id!=""){//更新
 								modals.closeWin(winId);

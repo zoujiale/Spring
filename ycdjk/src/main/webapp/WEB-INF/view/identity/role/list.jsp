@@ -309,7 +309,8 @@
 					}
 					modals.confirm("是否要删除该行数据？",function(){
 						$.post(basePath+"/role/delete/",{'id':rowId},function(data){
-							if(data.state == true){
+							var list=eval("("+data+")");
+		                	if(list["state"]==true){     
 								//modals.correct("已删除该数据");
 								roleTable.draw();
 							}else{  

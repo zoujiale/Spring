@@ -8,33 +8,43 @@
         http://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc.xsd">
-
-	<!-- 解决SpringMVC里面统一的配置 -->
-
-
-	<!-- 激活MVC的注解支持，使用默认的设置 -->
-	<mvc:annotation-driven>
-		<mvc:message-converters>
-			<!-- 负责把Java对象和JSON对象之间转换的转换器，依赖jackson -->
-			<bean
-				class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
-				<property name="objectMapper" ref="objectMapper" />
-			</bean>
-			<!-- 负责把Java对象和XML之间转换的转换器，也是依赖jackson -->
-			<bean
-				class="org.springframework.http.converter.xml.MappingJackson2XmlHttpMessageConverter">
-				<property name="objectMapper" ref="xmlMapper" />
-			</bean>
-		</mvc:message-converters>
-	</mvc:annotation-driven>
-
-	<bean id="objectMapper"
-		class="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean" />
-
-	<bean id="xmlMapper" parent="objectMapper">
-		<property name="createXmlMapper" value="true"></property>
-	</bean>
-
+		<mvc:annotation-driven>
+        <mvc:message-converters register-defaults="true">
+            <ref bean="stringHttpMessageConverter" />  
+            <ref bean="fastJsonHttpMessageConverter" />  
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+    
+    <bean id="stringHttpMessageConverter"  
+        class="org.springframework.http.converter.StringHttpMessageConverter">  
+        <constructor-arg value="UTF-8" index="0"></constructor-arg>
+        <property name="supportedMediaTypes">  
+            <list>  
+                <value>text/plain;charset=UTF-8</value>  
+            </list>  
+        </property>  
+    </bean>
+    
+    <bean id="fastJsonHttpMessageConverter" class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter4">
+        <property name="supportedMediaTypes">
+            <list>
+                <value>text/html;charset=UTF-8</value>
+                <value>application/json;charset=UTF-8</value> 
+            </list>
+        </property>
+        <property name="fastJsonConfig">
+        	<bean class="com.alibaba.fastjson.support.config.FastJsonConfig">
+        		<property name="features">
+	        		<list>
+		                <value>AllowArbitraryCommas</value>
+		                <value>AllowUnQuotedFieldNames</value>
+		                <value>DisableCircularReferenceDetect</value>
+		            </list>
+        		</property>
+        		<property name="dateFormat" value="yyyy-MM-dd"></property>
+        	</bean>
+        </property>
+    </bean>
 	<!-- 如果有静态的HTML、JS、CSS等文件，就不会把请求转发给Action（Controller），而是直接返回资源的内容 -->
 	<mvc:default-servlet-handler />
 

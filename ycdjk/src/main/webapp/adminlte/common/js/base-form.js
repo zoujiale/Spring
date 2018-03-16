@@ -217,6 +217,7 @@
     }
     //radio checkbox 渲染并生成
     BaseForm.prototype.buildAjaxBox = function (selector) {
+    	
         var type = $(selector).attr("type");
         var name = $(selector).attr("name");
         var value = $(selector).data("value") ? $(selector).data("value") : "id";
@@ -321,7 +322,6 @@
      * @param json_data 回填的数据
      */
     BaseForm.prototype.initFormData = function (json_data) {
-    	
         if (!json_data)
             return;
         var form = this.$element;
@@ -338,8 +338,8 @@
                 var is_radio = elem.type == 'radio', is_ckbox = elem.type == 'checkbox';
                 var is_date = $(elem).data("flag") == "datepicker" || $(elem).data("flag") == "date" || $(elem).data("flag") == "datetimepicker";
                 var date_format = $(elem).data("format") || "yyyy-mm-dd";
-                if (is_date)
-                    value = formatDate(value, date_format);
+             /*   if (is_date)
+                    value = formatDate(value, date_format);*/
                 if (is_radio) {
                     //icheck
                     if ($(elem).data("flag") == "icheck") {

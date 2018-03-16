@@ -322,16 +322,14 @@
 				expandIcon : "glyphicon glyphicon-stop",
 				collapseIcon : "glyphicon glyphicon-unchecked",
 				levels : 1,
+				enableLinks:true,
 				onNodeSelected : function(event, data) {
-					/*   alert("i am selected");
-					  alert(data.nodeId); */
 					fillDictForm(data);
 					formReadonly();
 					//console.log(JSON.stringify(data));
 				}
 			});
 		
-		alert(treeData);
 		if(treeData.length==0)
 			return;
 		//默认选中第一个节点
@@ -369,7 +367,6 @@
 			$("#name").val(data.text);
 			$("#url").val(data.url);
 			$("#levelCode").val(data.orderNumber)
-			$("#parentName").val(data.parent.name)
 			form.initFormData(data);
 			fillBackIconName(data.icon);
 		})

@@ -17,6 +17,7 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import lombok.Getter;
@@ -37,14 +38,13 @@ public class Role {
 	 * 激活状态
 	 */
 	private Boolean enable;
-	
-	@JsonBackReference
+	@JSONField(serialize = false) 
 	@ManyToMany
 	@JoinTable(name = "ycdjk_role_user",joinColumns = {@JoinColumn(name = "role_id")},
 	inverseJoinColumns = {@JoinColumn(name = "user_id")})
 	private List<User> users;
 	
-	
+	@JSONField(serialize = false) 
 	@ManyToMany(mappedBy = "roles",fetch =FetchType.EAGER)
 	private Set<Permission> permissions;
 	
@@ -56,6 +56,7 @@ public class Role {
 	/**
 	 * 创建日期
 	 */
+	@JSONField(format = "yyyy-MM-dd")  
 	@Column( name = "create_date_time")
 	private Date createDateTime;
 }
