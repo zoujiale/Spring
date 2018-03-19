@@ -8,10 +8,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.gzycdjk.commons.pojo.Menu;
+import com.gzycdjk.commons.vo.Message;
 import com.gzycdjk.identity.domain.Permission;
 import com.gzycdjk.identity.service.PermissionService;
 
@@ -43,6 +45,15 @@ public class PermissionAction {
 	
 		return ps;
 		
+		
+	}
+	
+	@PostMapping("/save")
+	@ResponseBody
+	public Message savePermission(Permission ps,@RequestParam("parent_id") String parentid
+			) {
+		Message ms = this.permissionservice.savePermission(ps,parentid);
+				return ms;
 		
 	}
 }
