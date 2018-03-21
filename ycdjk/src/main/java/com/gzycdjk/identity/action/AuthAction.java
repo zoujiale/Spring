@@ -8,6 +8,7 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
+import org.apache.shiro.web.util.SavedRequest;
 import org.apache.shiro.web.util.WebUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -69,13 +70,15 @@ public class AuthAction {
 		
 		
 		//拿到访问之前的url,因为后台管理页面太少这个先搁置
-		String requestUri = WebUtils.getRequestUri(req);
-		
-		if (StringUtils.isEmpty(requestUri)) {
-			requestUri = req.getContextPath() + "/commons/index";
+		SavedRequest savedRequest = WebUtils.getSavedRequest(req);
+		String requestUrl = null;
+		if (savedRequest == null) {
+			requestUrl = req.getContextPath() + "/commons/index";
+		}else {
+			requestUrl = savedRequest.getRequestURI();
+			
 		}
-		
-		
+		System.out.println(requestUrl);
 		// 经过Shiro的自定义验证
 		try {
 			
@@ -84,7 +87,7 @@ public class AuthAction {
 			md.addAttribute("user", principal);
 			LG.info("添加用户到Session里面" + principal.getUserName());
 			ms.setState(true);
-			ms.setMessage(requestUri);
+			ms.setMessage(requestUrl);
 		} catch (AuthenticationException e) {
 			ms.setMessage(e.getMessage());
 			ms.setState(false);

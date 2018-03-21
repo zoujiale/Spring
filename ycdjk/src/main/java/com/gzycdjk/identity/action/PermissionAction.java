@@ -30,7 +30,10 @@ public class PermissionAction {
 	public ModelAndView getMenuList() {
 		return new ModelAndView("/permission/list");
 	}
-	
+	/**
+	 * 获取生成树
+	 * @return
+	 */
 	@PostMapping("/treedata")
 	@ResponseBody
 	public List<TreeNode> getPermission(){
@@ -38,7 +41,11 @@ public class PermissionAction {
 		return this.permissionservice.createTreeNode();
 		
 	}
-	
+	/**
+	 * 获取单个菜单信息
+	 * @param id
+	 * @return
+	 */
 	@PostMapping("/get/{id}")
 	@ResponseBody
 	public Permission getPermissionById(@PathVariable("id") String id) {
@@ -48,13 +55,40 @@ public class PermissionAction {
 		
 		
 	}
-	
+	/**
+	 * 菜单保存
+	 * @param ps
+	 * @param parentid
+	 * @return
+	 */
 	@PostMapping("/save")
 	@ResponseBody
 	public Message savePermission(Permission ps,@RequestParam("parent_id") String parentid
 			) {
 		Message ms = this.permissionservice.savePermission(ps,parentid);
 				return ms;
+		
+	}
+	
+	
+	/**
+	 * 返回角色授权试图
+	 * @return
+	 */
+	@GetMapping("/authorization")
+	public ModelAndView getAuthorization() {
+		return new ModelAndView("/permission/authorization");
+	}
+	/**
+	 * 根据角色Id获取权限(生成树)
+	 * @param roleId
+	 * @return
+	 */
+	@PostMapping("/listtree/{roldId}")
+	@ResponseBody
+	public List<TreeNode> getTreeNodeByRoleId(@PathVariable("roldId")String roleId){
+		System.out.println(roleId+"角色Id");
+		return this.permissionservice.getTreeNodeByRoleId(roleId);
 		
 	}
 }

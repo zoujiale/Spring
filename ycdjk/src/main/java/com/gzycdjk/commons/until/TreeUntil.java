@@ -16,11 +16,12 @@ public class TreeUntil {
 		List<TreeNode> tr = new LinkedList<>();
 		for (String tn : treeNode.keySet()) {
 			TreeNode node = treeNode.get(tn);
-			if (node.getParentId()==null) {
+			if (node.getParentId()==null || node.getParentId() =="") {
 				// 一级菜单
 				tr.add(node);
 			}else {
 				if (treeNode.get(node.getParentId()).getNodes()==null) {
+					System.out.println(treeNode.get(node.getParentId()).getNodes());
 					treeNode.get(node.getParentId()).setNodes(new ArrayList<TreeNode>());
 				}
 				 treeNode.get(node.getParentId()).getNodes().add(node);

@@ -29,14 +29,14 @@
 		<property name="filterChainDefinitions">
 			<value>
 				<!--对静态资源设置匿名访问 -->
-				
+				/identity/auth = anon
 			    /adminlte/**=anon
 				/**.js=anon
 				/**=anon
 				/**.css=anon
 				/identity/news=anon
 				/**.html=anon
-
+				
 
 				<!--请求这个地址就自动退出 -->
 				/auth/logout.action=logout

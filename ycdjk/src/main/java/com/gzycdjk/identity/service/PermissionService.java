@@ -31,5 +31,11 @@ public interface PermissionService {
 	 * @return
 	 */
 	List<TreeNode> createTreeNode();
+	/**
+	 * 根据角色Id获取菜单树
+	 * @param roleId
+	 * @return
+	 */
+	List<TreeNode> getTreeNodeByRoleId(String roleId);
 
 }

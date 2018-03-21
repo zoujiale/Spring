@@ -5,6 +5,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.transaction.Transactional;
 
@@ -18,7 +19,9 @@ import com.gzycdjk.commons.until.ObjectComparison;
 import com.gzycdjk.commons.until.TreeUntil;
 import com.gzycdjk.commons.vo.Message;
 import com.gzycdjk.identity.dao.PermissionDao;
+import com.gzycdjk.identity.dao.RoleDao;
 import com.gzycdjk.identity.domain.Permission;
+import com.gzycdjk.identity.domain.Role;
 import com.gzycdjk.identity.service.PermissionService;
 
 @Service
@@ -26,6 +29,8 @@ import com.gzycdjk.identity.service.PermissionService;
 public class PermissionServiceImpl implements PermissionService {
 	@Autowired
 	PermissionDao permissiondao;
+	@Autowired
+	RoleDao roledao;
 
 	@Override
 	public Permission findByPermission(String id) {
@@ -97,6 +102,27 @@ public class PermissionServiceImpl implements PermissionService {
 			}
 			mp.put(node.getId(), node);
 		}
+		return TreeUntil.getTreeNodeList(mp);
+	}
+
+	@Override
+	public List<TreeNode> getTreeNodeByRoleId(String roleId) {
+		Role rl = this.roledao.load(Role.class, roleId);
+		Map<String,TreeNode> mp = new LinkedHashMap<>();
+		Set<Permission> permissions = rl.getPermissions();
+		for (Permission permission : permissions) {
+				TreeNode node = new TreeNode();
+				node.setId(permission.getId());
+				node.setText(permission.getText());
+				node.setOrderNumber(permission.getOrderNumber());
+				if (permission.getParent() == null) {
+					node.setParentId(null);
+				}else {
+					node.setParentId(permission.getParent().getId());
+				}
+				mp.put(node.getId(), node);
+		}
+		
 		return TreeUntil.getTreeNodeList(mp);
 	}
 

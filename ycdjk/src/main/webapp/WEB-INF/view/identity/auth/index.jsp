@@ -92,17 +92,24 @@
 					// 如果选中就为true
 					$("#ck_re").val("1");
 				}
-				$.post("${pgc}/identity/auth",seralize ,
-				          function(message){
-								console.log(message.state)
-								if (message.state ==true) {
-									// 暂且定义新闻为主页
-									window.location.href = "${pgc}/commons/index";
-								}else{
-									$("#p_state").text(message.message);
-								}
-								
-				          });
+				
+				$.ajax({
+					   type: "POST",
+					   url: "${pgc}/identity/auth",
+					   data: seralize,
+					   dataType:'json',
+					   success: function(msg){
+							if (msg.state==true) {
+								alert(msg.message);
+								// 暂且定义新闻为主页
+								window.location.href = msg.message;
+							}else{
+								$("#p_state").text(msg.message);
+							}
+					   }
+					});
+				
+				
 			});
 			
 			$('input').iCheck({
