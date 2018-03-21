@@ -329,6 +329,9 @@
 			function initTree(selectNodeId){
 				var treeData = null;
 				$.post(basePath + "/permission/treedata", null, function(data) {
+					if (data.nodes == null) {
+						delete data.nodes;	
+					}
 					treeData = data;
 					console.log(JSON.stringify(treeData));
 					$("#tree").treeview({
@@ -394,6 +397,7 @@
 						
 					}else
 					{
+						
 						$('#children').val(data.parent.text)
 						$('input[name="parent"]').val(data.parent.id);
 					}

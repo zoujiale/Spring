@@ -3,7 +3,9 @@ package ycdjk;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -13,7 +15,9 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.gzycdjk.commons.pojo.TreeNode;
 import com.gzycdjk.commons.pojo.UserRole;
+import com.gzycdjk.commons.until.TreeUntil;
 import com.gzycdjk.commons.vo.Message;
 import com.gzycdjk.commons.vo.Page;
 import com.gzycdjk.commons.vo.Pageable;
@@ -80,7 +84,25 @@ public class PageServiceTest extends AbstractTransactionalJUnit4SpringContextTes
 		Permission parent = permission.getParent();
 		System.out.println(parent.getText());
 	}
-	
+	@Test
+	public void fds() throws Exception {
+		List<Permission> permission = this.permissiondao.loadAll(Permission.class);
+		Map<String, TreeNode> mp = new LinkedHashMap<>();
+		for (Permission ps : permission) {
+			TreeNode node = new TreeNode();
+			node.setId(ps.getId());
+			node.setText(ps.getText());
+			node.setOrderNumber(ps.getOrderNumber());
+			if (ps.getParent() == null) {
+				node.setParentId(null);
+			}else {
+				node.setParentId(ps.getParent().getId());
+			}
+			mp.put(node.getId(), node);
+		}
+		
+		TreeUntil.getTreeNodeList(mp);
+	}
 	
 	
 }

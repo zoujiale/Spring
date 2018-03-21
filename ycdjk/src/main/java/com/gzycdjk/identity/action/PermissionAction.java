@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.gzycdjk.commons.pojo.Menu;
+import com.gzycdjk.commons.pojo.TreeNode;
 import com.gzycdjk.commons.vo.Message;
 import com.gzycdjk.identity.domain.Permission;
 import com.gzycdjk.identity.service.PermissionService;
@@ -32,9 +33,9 @@ public class PermissionAction {
 	
 	@PostMapping("/treedata")
 	@ResponseBody
-	public List<Permission> getPermission(){
+	public List<TreeNode> getPermission(){
 		
-		return this.permissionservice.findTopPermission();
+		return this.permissionservice.createTreeNode();
 		
 	}
 	

@@ -2,7 +2,9 @@ package com.gzycdjk.identity.service.impl;
 
 import java.beans.IntrospectionException;
 import java.lang.reflect.InvocationTargetException;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.transaction.Transactional;
 
@@ -11,7 +13,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import com.gzycdjk.commons.pojo.Menu;
+import com.gzycdjk.commons.pojo.TreeNode;
 import com.gzycdjk.commons.until.ObjectComparison;
+import com.gzycdjk.commons.until.TreeUntil;
 import com.gzycdjk.commons.vo.Message;
 import com.gzycdjk.identity.dao.PermissionDao;
 import com.gzycdjk.identity.domain.Permission;
@@ -19,7 +23,7 @@ import com.gzycdjk.identity.service.PermissionService;
 
 @Service
 @Transactional
-public class PermissionServiceImpl implements PermissionService{
+public class PermissionServiceImpl implements PermissionService {
 	@Autowired
 	PermissionDao permissiondao;
 
@@ -27,7 +31,7 @@ public class PermissionServiceImpl implements PermissionService{
 	public Permission findByPermission(String id) {
 		Permission permission = permissiondao.load(Permission.class, id);
 		Permission ps = new Permission();
-		
+
 		try {
 			ObjectComparison.comparison(ps, permission);
 		} catch (InstantiationException e) {
@@ -38,25 +42,17 @@ public class PermissionServiceImpl implements PermissionService{
 		} catch (InvocationTargetException e) {
 		} catch (IntrospectionException e) {
 		}
-		return ps; 
+		return ps;
 	}
+
 	@Override
 	public List<Permission> findTopPermission() {
 		return this.permissiondao.findTopPermission();
 	}
-	@Override
-	public Menu test(String id) {
-		Permission permission = permissiondao.load(Permission.class, id);
-		Menu menu = new Menu();
-		menu.setNodes(permission.getNodes());
-		menu.setParent(permission.getParent());
-		return menu;
-	}
 
 	@Override
 	public Message savePermission(Permission ps, String parentid) {
-	
-		
+
 		// 新增一个菜单
 		if ("".equals(ps.getId())) {
 			Permission permission = new Permission();
@@ -64,16 +60,15 @@ public class PermissionServiceImpl implements PermissionService{
 			// 父级菜单
 			Permission load = null;
 			if (!"".equals(parentid)) {
-				load= this.permissiondao.load(Permission.class, parentid);
+				load = this.permissiondao.load(Permission.class, parentid);
 			}
-		
-			
+
 			permission.setParent(load);
 			permission.setPercode("crud");
 			permission.setText(ps.getText());
 			permission.setUrl(ps.getUrl());
 			this.permissiondao.save(permission);
-		}else 
+		} else
 		// 编辑或者保存菜单
 		{
 			Permission permission = this.permissiondao.load(Permission.class, ps.getId());
@@ -82,12 +77,27 @@ public class PermissionServiceImpl implements PermissionService{
 			permission.setText(ps.getText());
 			permission.setUrl(ps.getUrl());
 		}
-		
-		
-		return new Message("保存或编辑成功",true);
+
+		return new Message("保存或编辑成功", true);
 	}
 
-	
-	
-	
+	@Override
+	public List<TreeNode> createTreeNode() {
+		List<Permission> permission = this.permissiondao.loadAll(Permission.class);
+		Map<String, TreeNode> mp = new LinkedHashMap<>();
+		for (Permission ps : permission) {
+			TreeNode node = new TreeNode();
+			node.setId(ps.getId());
+			node.setText(ps.getText());
+			node.setOrderNumber(ps.getOrderNumber());
+			if (ps.getParent() == null) {
+				node.setParentId(null);
+			}else {
+				node.setParentId(ps.getParent().getId());
+			}
+			mp.put(node.getId(), node);
+		}
+		return TreeUntil.getTreeNodeList(mp);
+	}
+
 }
