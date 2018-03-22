@@ -286,7 +286,7 @@
 					    	return false;
 					    }
 					    modals.confirm('是否删除该节点',function(){
-					    	ajaxPost(basePath+"/function/delete/"+selectedNode.id,null,function(data){
+					    	ajaxPost(basePath+"/permission/delete/"+selectedNode.id,null,function(data){
 					    		if(data.success){
 					    		   modals.correct('删除成功');
 					    		}else{

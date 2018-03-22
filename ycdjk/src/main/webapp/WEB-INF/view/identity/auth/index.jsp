@@ -100,7 +100,6 @@
 					   dataType:'json',
 					   success: function(msg){
 							if (msg.state==true) {
-								// 暂且定义新闻为主页
 								window.location.href = msg.message;
 							}else{
 								$("#p_state").text(msg.message);

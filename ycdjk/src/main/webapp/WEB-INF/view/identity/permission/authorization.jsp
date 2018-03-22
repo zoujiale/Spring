@@ -105,7 +105,7 @@
 
 		<script>
 			var roleTable;
-
+			
 			var roleObj = {
 				loadData : function() {
 					var role_config = {
@@ -124,15 +124,7 @@
 							roleTable.selectFirstRow(true);
 						}
 					}
-					$('#role_table tbody').on('click', 'tr', function () {
-					    if ($(this).hasClass('selected') ) {
-					       $(this).removeClass('selected');
-					    } else {
-					       table.$('tr.selected').removeClass('selected');
-					       $(this).addClass('selected');
-					       
-					    }
-					});
+					
 				
 
 					roleTable =$('#role_table').DataTable({		
@@ -172,6 +164,8 @@
 						});
 					this.reloadTreeData();
 				},
+				
+			
 				//菜单树的初始化
 				reloadTreeData : function() {
 					var selectNodeId = 0;
@@ -189,15 +183,17 @@
 									showCheckbox : false,
 									showIcon : false
 								});
+								if (treeData.length == 0)
+									return;
+								//默认选中第一个节点
+								selectNodeId = selectNodeId || 0;
+								$("#rftree").data('treeview').selectNode(selectNodeId);
+								$("#rftree").data('treeview').expandNode(selectNodeId);
+								$("#rftree").data('treeview').revealNode(selectNodeId);
 							},'json');
 				
-					if (treeData.length == 0)
-						return;
-					//默认选中第一个节点
-					selectNodeId = selectNodeId || 0;
-					$("#rftree").data('treeview').selectNode(selectNodeId);
-					$("#rftree").data('treeview').expandNode(selectNodeId);
-					$("#rftree").data('treeview').revealNode(selectNodeId);
+				
+					
 				},
 				searchRoleFunc : function() {
 					$('#rftree').treeview('search',
@@ -259,6 +255,7 @@
 
 			}
 			
+		
 			 function loadData(sSource, aoData, fnCallback) {
 	                var map = getMap(aoData);
 	            
@@ -301,7 +298,26 @@
 	            }
 	            return map;
 	        }
+			
+		
 			$(function() {
+				
+				
+				$('#role_table tbody').on( 'click', 'tr', function () {
+					  var rowData = roleTable.row( this ).data();
+					  console.log(rowData);
+					  if ( !$(this).hasClass('selected')) {
+						  $('tr.selected').removeClass('selected');
+		                  $(this).addClass('selected');
+		                  $("#roleId").val(rowData.id);
+		                  
+						}else
+						{	
+							 $(this).toggleClass('selected');
+						}
+						 	
+						 
+					} );
 				//初始化数据
 
 				roleObj.loadData();
